@@ -1,0 +1,6 @@
+{
+  "name": "luau-cargo-semver",
+  "tree": {
+    "$path": "test/build"
+  }
+}

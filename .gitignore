@@ -1,0 +1,15 @@
+# OS-related files
+[Dd]esktop.ini
+Thumbs.db
+.DS_Store
+
+# Roblox Studio files
+*.rbxl
+*.rbxl.lock
+
+sourcemap.json
+rbxmodel-sourcemap.json
+/test/wally.lock
+/test/Packages
+/test/build
+*.rbxm

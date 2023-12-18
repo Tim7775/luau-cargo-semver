@@ -1,0 +1,18 @@
+{
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "[typescript][json][jsonc][yaml][github-actions-workflow]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[lua]": {
+    "editor.defaultFormatter": "JohnnyMorganz.stylua",
+    "editor.formatOnSave": true
+  },
+  "luau-lsp.types.roblox": false,
+  "luau-lsp.require.mode": "relativeToFile",
+  "luau-lsp.types.definitionFiles": ["testez.d.luau"],
+  "luau-lsp.require.directoryAliases": {
+    "@lune/": "~/.lune/.typedefs/0.7.11/"
+  }
+}
