@@ -9,6 +9,7 @@
     "editor.defaultFormatter": "JohnnyMorganz.stylua",
     "editor.formatOnSave": true
   },
+  "stylua.targetReleaseVersion": "v0.19.1",
   "luau-lsp.types.roblox": false,
   "luau-lsp.require.mode": "relativeToFile",
   "luau-lsp.types.definitionFiles": ["testez.d.luau"],
