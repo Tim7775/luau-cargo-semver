@@ -6,10 +6,10 @@ Thumbs.db
 # Roblox Studio files
 *.rbxl
 *.rbxl.lock
+*.rbxm
 
-sourcemap.json
-rbxmodel-sourcemap.json
+/test/rbx-source
 /test/wally.lock
 /test/Packages
-/test/build
-*.rbxm
+
+sourcemap.json

@@ -21,6 +21,10 @@ local function robloxifyRequires(file)
 	return result
 end
 
+local function robloxifyWallyPackageManifest(file)
+	return (string.gsub(file, "private = true #robloxify\n", ""))
+end
+
 local function robloxify(sourceFolder, targetFolder)
 	if fs.isDir(targetFolder) then
 		fs.removeDir(targetFolder)
@@ -30,8 +34,11 @@ local function robloxify(sourceFolder, targetFolder)
 		if string.match(filePath, "%.luau?$") then
 			local file = fs.readFile(filePath)
 			fs.writeFile(filePath, robloxifyRequires(file))
+		elseif string.match(filePath, "wally%.toml$") then
+			local file = fs.readFile(filePath)
+			fs.writeFile(filePath, robloxifyWallyPackageManifest(file))
 		end
 	end)
 end
 
-robloxify("lib", "test/build")
+return robloxify

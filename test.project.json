@@ -1,0 +1,24 @@
+{
+  "name": "luau-cargo-semver",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+      "luau-cargo-semver": {
+        "$path": "test/rbx-source"
+      }
+    },
+    "TestService": {
+      "$className": "TestService",
+      "$properties": {
+        "ExecuteWithStudioRun": true
+      },
+      "Packages": {
+        "$path": "test/Packages"
+      },
+      "run": {
+        "$path": "test/run.server.luau"
+      }
+    }
+  }
+}

@@ -10,7 +10,7 @@ on:
 
 jobs:
   analyze:
-    name: Analyze & build
+    name: Analyze
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -19,17 +19,15 @@ jobs:
       - name: Install Aftman
         uses: ok-nick/setup-aftman@v0
 
-      - name: Robloxify source
-        run: lune robloxify
+      - name: Build rbx-source
+        run: lune build-rbx-source
 
       - name: Build sourcemap
-        run: rojo sourcemap rbxmodel.project.json --output rbxmodel-sourcemap.json
+        run: rojo sourcemap rbxmodel.project.json --output sourcemap.json
 
       - name: Analyze
-        run: luau-lsp analyze --definitions=testez.d.luau --base-luaurc=.luaurc --sourcemap=rbxmodel-sourcemap.json test/build
+        run: luau-lsp analyze --definitions=testez.d.luau --base-luaurc=.luaurc --sourcemap=sourcemap.json test/rbx-source
 
-      - name: Build Roblox model
-        run: rojo build rbxmodel.project.json -o luau-cargo-semver.rbxm
   lint:
     name: Lint
     runs-on: ubuntu-latest
@@ -41,8 +39,8 @@ jobs:
         uses: ok-nick/setup-aftman@v0
 
       - name: Lint
-        run: |
-          selene ./lib
+        run: selene ./lib
+
   style:
     name: Styling
     runs-on: ubuntu-latest

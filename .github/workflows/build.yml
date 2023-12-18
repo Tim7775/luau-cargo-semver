@@ -1,0 +1,32 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "lib/**"
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Aftman
+        uses: ok-nick/setup-aftman@v0
+
+      - name: Build rbx-source
+        run: lune build-rbx-source
+
+      - name: Build Roblox model
+        run: rojo build rbxmodel.project.json -o luau-cargo-semver.rbxm
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: roblox-model
+          path: luau-cargo-semver.rbxm
+          if-no-files-found: error
