@@ -24,7 +24,7 @@ jobs:
       - name: Build Roblox model
         run: rojo build rbxmodel.project.json -o luau-cargo-semver.rbxm
 
-      - name: Upload
+      - name: Upload Roblox model as artifact
         uses: actions/upload-artifact@v4
         with:
           name: roblox-model
