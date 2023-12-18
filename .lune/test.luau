@@ -1,7 +1,11 @@
 local fs = require("@lune/fs")
 local process = require("@lune/process")
-local robloxify = require("lib/robloxify")
-local color = require("@lune/stdio").color
+local robloxify = require("./lib/robloxify")
+local stdio = require("@lune/stdio")
+
+local function write(msg, color)
+	print(stdio.color(color) .. (string.gsub(msg, "\n$", "")) .. stdio.color("reset"))
+end
 
 --Build roblox source modules
 robloxify("lib", "test/rbx-source")
@@ -9,13 +13,12 @@ robloxify("lib", "test/rbx-source")
 --Install wally packages
 if not fs.isDir("test/Packages") then
 	local result = process.spawn("wally", { "install" }, { cwd = process.cwd .. "/" .. "test" })
-	local output = string.gsub(result.stderr, "\n$", "")
 	if not result.ok then
-		print(color("red") .. "An error occured while installing wally packages")
-		print(output .. color("reset"))
+		write("An error occured while installing Wally packages", "red")
+		write(result.stderr, "red")
 		process.exit(1)
 	end
-	print(color("blue") .. output .. color("reset"))
+	write(result.stderr, "blue")
 end
 
 --Build roblox place
@@ -26,11 +29,11 @@ local result = process.spawn("rojo", {
 	"test/test.rbxl",
 })
 if not result.ok then
-	print(color("red") .. "An error occured during rojo build")
-	print(result.stderr .. color("reset"))
+	write("An error occured while building Roblox place file", "red")
+	write(result.stderr, "red")
 	process.exit(1)
 end
-print(color("blue") .. string.gsub(result.stdout, "\n$", "") .. color("reset"))
+write(result.stdout, "blue")
 
 --Run tests
 result = process.spawn("run-in-roblox", {
@@ -39,9 +42,8 @@ result = process.spawn("run-in-roblox", {
 	"--script",
 	"test/run.server.luau",
 })
-local output = string.gsub(result.stdout, "\n$", "")
-if result.ok then
-	print(color("green") .. output .. color("reset"))
-else
-	print(color("red") .. output .. color("reset"))
+if not result.ok then
+	write(result.stdout, "red")
+	process.exit(1)
 end
+write(result.stdout, "green")

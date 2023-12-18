@@ -22,7 +22,7 @@ local function robloxifyRequires(file)
 end
 
 local function robloxifyWallyPackageManifest(file)
-	return (string.gsub(file, "private = true #robloxify\n", ""))
+	return (string.gsub(file, "private = true #robloxify\n", "", 1))
 end
 
 local function robloxify(sourceFolder, targetFolder)
