@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[97],{63891:e=>{e.exports=JSON.parse('{"sourceUrl":"https://github.com/Tim7775/luau-cargo-semver/blob/main","baseUrl":"/luau-cargo-semver/","classOrder":[{"section":"CargoSemver","classes":["Version","Prerelease","BuildMetadata","VersionReq","Comparator"]}],"apiCategories":[]}')}}]);
