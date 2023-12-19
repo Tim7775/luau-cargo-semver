@@ -1,0 +1,12 @@
+gitSourceBranch = "main"
+
+[[classOrder]]
+section = "CargoSemver"
+classes = ["Version", "Prerelease", "BuildMetadata", "VersionReq", "Comparator"]
+
+[docusaurus]
+tagline = "A parser and evaluator for Cargo's flavor of Semantic Versioning."
+
+[home]
+enabled = true
+includeReadme = true
