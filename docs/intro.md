@@ -7,6 +7,6 @@ sidebar_position: 1
 Here are some quick links to get started using Semver:
 
 - [Installation guide](/docs/installation)
-- [**API Docs**](/api/Version)
+- [**API Docs**](/api/Semver)
 - [Examples](/docs/examples)
 - [Memoization](/docs/memoization)
