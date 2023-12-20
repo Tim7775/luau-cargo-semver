@@ -7,10 +7,10 @@ local function write(msg, color)
 	print(stdio.color(color) .. (string.gsub(msg, "\n$", "")) .. stdio.color("reset"))
 end
 
---Build roblox source modules
-robloxify("lib", "test/rbx-source")
+--Build Roblox source
+robloxify("lib", "test/roblox-source")
 
---Install wally packages
+--Install Wally packages
 if not fs.isDir("test/Packages") then
 	local result = process.spawn("wally", { "install" }, { cwd = process.cwd .. "/" .. "test" })
 	if not result.ok then
@@ -21,10 +21,10 @@ if not fs.isDir("test/Packages") then
 	write(result.stderr, "blue")
 end
 
---Build roblox place
+--Build Roblox place
 local result = process.spawn("rojo", {
 	"build",
-	"test.project.json",
+	"roblox-place.project.json",
 	"-o",
 	"test/test.rbxl",
 })

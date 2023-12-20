@@ -1,2 +1,2 @@
 local robloxify = require("./lib/robloxify")
-robloxify("lib", "test/rbx-source")
+robloxify("lib", "test/roblox-source")

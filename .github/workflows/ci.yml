@@ -1,4 +1,4 @@
-name: CI
+name: ci
 
 on:
   push:
@@ -19,14 +19,14 @@ jobs:
       - name: Install Aftman
         uses: ok-nick/setup-aftman@v0
 
-      - name: Build rbx-source
-        run: lune build-rbx-source
+      - name: Build Roblox source
+        run: lune build-roblox-source.luau
 
       - name: Build sourcemap
-        run: rojo sourcemap rbxmodel.project.json --output sourcemap.json
+        run: rojo sourcemap roblox-model.project.json --output sourcemap.json
 
       - name: Analyze
-        run: luau-lsp analyze --definitions=testez.d.luau --base-luaurc=.luaurc --sourcemap=sourcemap.json test/rbx-source
+        run: luau-lsp analyze --definitions=testez.d.luau --base-luaurc=.luaurc --sourcemap=sourcemap.json test/roblox-source
 
   lint:
     name: Lint

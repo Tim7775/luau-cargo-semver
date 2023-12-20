@@ -160,10 +160,9 @@ function Version.interface.is(obj: any): boolean
 end
 
 function Version.metatable.__tostring(self: Version)
-	--TODO: Rethink comment
-	--@NOTE: A string.format call using %d casts the number from a double into a long long, this may
-	--result in precision loss. Precision loss can be avoided by formatting numbers using %* or %s instead.
-	local buffer = { string.format("%*.%*.%*", self.major, self.minor, self.patch) }
+	--NOTE: A string.format call using %d casts the number from a double into a long long, this may result in precision loss.
+	--Precision loss can be avoided with string interpolation or by formatting numbers using %* or %s instead.
+	local buffer = { `{self.major}.{self.minor}.{self.patch}` }
 	if not self.pre:is_empty() then
 		table.insert(buffer, "-" .. tostring(self.pre))
 	end

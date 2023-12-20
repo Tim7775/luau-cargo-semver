@@ -1,4 +1,4 @@
-name: Build
+name: build
 
 on:
   push:
@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "lib/**"
+  workflow_dispatch:
 
 jobs:
   build:
@@ -18,11 +19,11 @@ jobs:
       - name: Install Aftman
         uses: ok-nick/setup-aftman@v0
 
-      - name: Build rbx-source
-        run: lune build-rbx-source
+      - name: Build Roblox source
+        run: lune build-roblox-source.luau
 
       - name: Build Roblox model
-        run: rojo build rbxmodel.project.json -o luau-cargo-semver.rbxm
+        run: rojo build roblox-model.project.json -o luau-cargo-semver.rbxm
 
       - name: Upload Roblox model as artifact
         uses: actions/upload-artifact@v4

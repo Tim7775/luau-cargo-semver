@@ -1,6 +1,6 @@
 {
   "name": "luau-cargo-semver",
   "tree": {
-    "$path": "test/rbx-source"
+    "$path": "test/roblox-source"
   }
 }

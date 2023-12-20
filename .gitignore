@@ -20,6 +20,6 @@ sourcemap.json
 /build
 /node_modules
 
-/test/rbx-source
+/test/roblox-source
 /test/wally.lock
 /test/Packages

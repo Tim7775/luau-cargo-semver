@@ -15,8 +15,8 @@ local function robloxifyRequires(file)
 	--Bespoke path conversion algorithm (patent-pending)
 	local result = string.gsub(file, "require%b() %-%->require%b()", function(capture)
 		local nextRequire = string.gmatch(capture, "require%b()")
-		local _, rbxRequire = nextRequire(), nextRequire() :: string
-		return rbxRequire
+		local _pathRequire, robloxRequire = nextRequire(), nextRequire() :: string
+		return robloxRequire
 	end)
 	return result
 end

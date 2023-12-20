@@ -5,7 +5,7 @@
     "ReplicatedStorage": {
       "$className": "ReplicatedStorage",
       "luau-cargo-semver": {
-        "$path": "test/rbx-source"
+        "$path": "test/roblox-source"
       }
     },
     "TestService": {
