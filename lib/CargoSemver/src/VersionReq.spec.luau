@@ -36,10 +36,11 @@ return function()
 		assert_match_all(r, { "1.0.0", "1.1.0", "1.0.1" })
 		assert_match_none(r, { "0.9.9", "0.10.0", "0.1.0", "1.0.0-pre", "1.0.1-pre" })
 	end)
+	--[[VersionReq.default was omitted because it's not useful in Luau
 	it("test_default", function()
 		local r = VersionReq.default
 		expect(r).to.equal(VersionReq.STAR)
-	end)
+	end)--]]
 	it("test_exact", function()
 		local r = req("=1.0.0")
 		assert_to_string(r, "=1.0.0")
@@ -367,7 +368,7 @@ return function()
 			value.hash(&mut hasher);
 			hasher.finish()
 		}
-	
+
 		assert!(req("^1") == req("^1"));
 		assert!(calculate_hash(req("^1")) == calculate_hash(req("^1")));
 		assert!(req("^1") != req("^2"));

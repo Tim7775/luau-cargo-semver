@@ -181,7 +181,6 @@ end
 	Counterintuitively a `*` VersionReq does not match every possible version number. In particular, in order for *any* `VersionReq` to match a pre-release version, the `VersionReq` must contain at least one [Comparator] that has an explicit major, minor, and patch version identical to the pre-release being matched, and that has a nonempty pre-release component. Since `*` is not written with an explicit major, minor, and patch version, and does not contain a nonempty pre-release component, it does not match any pre-release versions.
 ]=]
 VersionReq.interface.STAR = VersionReq.interface.parse("*")
-VersionReq.interface.default = VersionReq.interface.STAR
 table.freeze(VersionReq.interface)
 table.freeze(VersionReq.prototype)
 table.freeze(VersionReq.metatable)
