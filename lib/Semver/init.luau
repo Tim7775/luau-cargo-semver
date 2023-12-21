@@ -150,6 +150,9 @@ type parseFunc = (string) -> any
 
 --[=[
 	@param memoizationFunc <T>(parseFunc<T>)->parseFunc<T>
+	The performance of the Semver library can be improved by setting a memoization function. Memoization functions can prevent repeated parsing of semver strings
+	(Note: Memoization functions can be found in the [luau-caching-and-memoization](https://github.com/tim7775/luau-caching-and-memoization) repository).
+
 	**Usage:**
 	```lua
 	Semver.setMemoizationFunc("Version", memoizeFrame)
