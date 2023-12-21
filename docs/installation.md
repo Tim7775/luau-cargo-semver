@@ -24,6 +24,6 @@ Semver = "tim7775/semver@1"
 
 Require Semver like any other module grabbed from Wally.
 
-:::note Wally
-Not familiar with Wally? Wally is a package manager (like npm) for the Roblox ecosystem.
+> **:information_source: Note:**  
+> Not familiar with Wally? Wally is a package manager (like npm) for the Roblox ecosystem.
 To get started, check out the [Wally repository](https://github.com/UpliftGames/wally).
