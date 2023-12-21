@@ -9,4 +9,16 @@ tagline = "A parser and evaluator for Cargo's flavor of Semantic Versioning."
 
 [home]
 enabled = true
-includeReadme = true
+includeReadme = false
+
+[[home.features]]
+title = "Simple"
+description = "Provides a simple and idiomatic Luau API wrapper for the low-level Rust-style API."
+
+[[home.features]]
+title = "Robust"
+description = "Passes every test included in dtolnay/semver."
+
+[[home.features]]
+title = "Performant"
+description = "Parses semantic versions without creating any unnecessary substrings."
