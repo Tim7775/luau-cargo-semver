@@ -1,6 +1,6 @@
 local fs = require("@lune/fs")
 local process = require("@lune/process")
-local robloxify = require("./lib/robloxify")
+local robloxify = require("./lune-utils/robloxify")
 local stdio = require("@lune/stdio")
 
 local function write(msg, color)
