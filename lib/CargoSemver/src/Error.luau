@@ -38,7 +38,7 @@ table.freeze(Position)
 	Note: 2^53 + 1 evaluates to 2^53, so a value of 2^53 could already have been the result of precision loss
 ]]
 local LUAU_MAX_PRECISE_INT = 2 ^ 53 - 1
-local MAX_IDENTIFIER_LENGTH = 255
+local MAX_IDENTIFIER_LENGTH = 512
 
 local Bounds = table.freeze({
 	LUAU_MAX_PRECISE_INT = LUAU_MAX_PRECISE_INT,

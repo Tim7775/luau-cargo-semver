@@ -126,7 +126,7 @@ local bMinus, bPlus = string.byte("-"), string.byte("+")
 --- @error EmptySegment ("1.0.0-" or "1.0.0+") -- the pre-release or build metadata are indicated present but empty.
 --- @error UnexpectedCharAfter ("1.0.0-alpha_123") -- pre-release or build metadata have something outside the allowed characters, which are 0-9, A-Z, a-z, -, and . (dot).
 --- @error Overflow ("9007199254740992.0.0") -- value of major, minor or patch exceeds LUAU_MAX_PRECISE_INT (2^53 - 1).
---- @error MaxIdentifierLength ("1.0.0-" .. string.rep("a", 256)) -- identifier length exceeds MAX_IDENTIFIER_LENGTH (255).
+--- @error MaxIdentifierLength ("1.0.0-" .. string.rep("a", 513)) -- identifier length exceeds MAX_IDENTIFIER_LENGTH (512).
 function Version.interface.parse(input: string): Version
 	assert(input ~= "", Error.Kind.Empty)
 	local stringView: Parse.StringView = { str = input, cursor = 1, pos = Position.Major }
