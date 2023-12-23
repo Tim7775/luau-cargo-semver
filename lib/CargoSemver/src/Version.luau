@@ -62,44 +62,37 @@ end
 
 	Spec: https://docs.rs/semver/1.0.20/semver/struct.Version.html
 ]=]
---[=[
-	@within Version
-	@prop major number
-	@readonly
-]=]
---[=[
-	@within Version
-	@prop minor number
-	@readonly
-]=]
---[=[
-	@within Version
-	@prop patch number
-	@readonly
-]=]
---[=[
-	@within Version
-	@prop pre Prerelease
-	@readonly
-]=]
---[=[
-	@within Version
-	@prop build BuildMetadata
-	@readonly
-]=]
 local Version = {}
 Version.interface = {}
 Version.prototype = {}
 Version.metatable = { __index = Version.prototype }
 
---[=[
-	@within Version
-	@param major number
-	@param minor number
-	@param patch number
-	@param pre Prerelease
-	@param build BuildMetadata
-]=]
+--- @within Version
+--- @prop major number
+--- @readonly
+
+--- @within Version
+--- @prop minor number
+--- @readonly
+
+--- @within Version
+--- @prop patch number
+--- @readonly
+
+--- @within Version
+--- @prop pre Prerelease
+--- @readonly
+
+--- @within Version
+--- @prop build BuildMetadata
+--- @readonly
+
+--- @within Version
+--- @param major number
+--- @param minor number
+--- @param patch number
+--- @param pre Prerelease
+--- @param build BuildMetadata
 function Version.interface.new(
 	major: number,
 	minor: number,
@@ -118,15 +111,17 @@ function Version.interface.new(
 end
 
 local bMinus, bPlus = string.byte("-"), string.byte("+")
---- @within Version
---- Possible reasons for the parse to fail include:
---- @error UnexpectedEnd ("1.0") -- too few numeric components. A SemVer version must have exactly three. If you are looking at something that has fewer than three numbers in it, it’s possible it is a VersionReq instead (with an implicit default ^ comparison operator).
---- @error LeadingZero ("1.0.01") -- a numeric component has a leading zero.
---- @error UnexpectedChar ("1.0.unknown") -- unexpected character in one of the components.
---- @error EmptySegment ("1.0.0-" or "1.0.0+") -- the pre-release or build metadata are indicated present but empty.
---- @error UnexpectedCharAfter ("1.0.0-alpha_123") -- pre-release or build metadata have something outside the allowed characters, which are 0-9, A-Z, a-z, -, and . (dot).
---- @error Overflow ("9007199254740992.0.0") -- value of major, minor or patch exceeds LUAU_MAX_PRECISE_INT (2^53 - 1).
---- @error MaxIdentifierLength ("1.0.0-" .. string.rep("a", 513)) -- identifier length exceeds MAX_IDENTIFIER_LENGTH (512).
+--[=[
+	@within Version
+	Possible reasons for the parse to fail include:
+	@error UnexpectedEnd ("1.0") -- too few numeric components. A SemVer version must have exactly three. If you are looking at something that has fewer than three numbers in it, it’s possible it is a VersionReq instead (with an implicit default ^ comparison operator).
+	@error LeadingZero ("1.0.01") -- a numeric component has a leading zero.
+	@error UnexpectedChar ("1.0.unknown") -- unexpected character in one of the components.
+	@error EmptySegment ("1.0.0-" or "1.0.0+") -- the pre-release or build metadata are indicated present but empty.
+	@error UnexpectedCharAfter ("1.0.0-alpha_123") -- pre-release or build metadata have something outside the allowed characters, which are 0-9, A-Z, a-z, -, and . (dot).
+	@error Overflow ("9007199254740992.0.0") -- value of major, minor or patch exceeds LUAU_MAX_PRECISE_INT (2^53 - 1).
+	@error MaxIdentifierLength ("1.0.0-" .. string.rep("a", 513)) -- identifier length exceeds MAX_IDENTIFIER_LENGTH (512).
+]=]
 function Version.interface.parse(input: string): Version
 	assert(input ~= "", Error.Kind.Empty)
 	local stringView: Parse.StringView = { str = input, cursor = 1, pos = Position.Major }
@@ -154,13 +149,22 @@ function Version.interface.parse(input: string): Version
 	return table.freeze(self)
 end
 
---- @within Version
+--[=[
+	@within Version
+	Returns `true` if `obj` is a [Version].
+]=]
 function Version.interface.is(obj: any): boolean
 	return type(obj) == "table" and getmetatable(obj) == Version.metatable
 end
 
+--[=[
+	@within Version
+	@method __tostring
+	@return string
+	This metamethod transforms `self` into a string.
+]=]
 function Version.metatable.__tostring(self: Version)
-	--NOTE: A string.format call using %d casts the number from a double into a long long, this may result in precision loss.
+	--Note: A string.format call using %d casts the number from a double into a long long, this may result in precision loss.
 	--Precision loss can be avoided with string interpolation or by formatting numbers using %* or %s instead.
 	local buffer = { `{self.major}.{self.minor}.{self.patch}` }
 	if not self.pre:is_empty() then
@@ -172,6 +176,13 @@ function Version.metatable.__tostring(self: Version)
 	return table.concat(buffer)
 end
 
+--[=[
+	@within Version
+	@method __eq
+	@param other Version
+	@return boolean
+	This metamethod tests for `self` and `other` values to be equal and is used by the operators `==` and `~=`.
+]=]
 function Version.metatable.__eq(self: Version, other: Version)
 	return self.major == other.major
 		and self.minor == other.minor
@@ -180,6 +191,13 @@ function Version.metatable.__eq(self: Version, other: Version)
 		and self.build == other.build
 end
 
+--[=[
+	@within Version
+	@method __lt
+	@param other Version
+	@return boolean
+	This metamethod tests less than (for `self` and `other`) and is used by the operators `<` and `>`.
+]=]
 function Version.metatable.__lt(self: Version, other: Version)
 	if self.major ~= other.major then
 		return self.major < other.major
@@ -193,6 +211,13 @@ function Version.metatable.__lt(self: Version, other: Version)
 	return self.build < other.build
 end
 
+--[=[
+	@within Version
+	@method __le
+	@param other Version
+	@return boolean
+	This metamethod tests less than or equal to (for `self` and `other`) and is used by the operators `<=` and `>=`.
+]=]
 function Version.metatable.__le(self: Version, other: Version)
 	if self.major ~= other.major then
 		return self.major < other.major
@@ -211,10 +236,19 @@ end
 	@method cmp_precedence
 	@param other Version
 	@return -1 | 0 | 1
+	Compare the major, minor, patch and [Prerelease] value of `self` and `other`. Unlike the relational operators,
+	this method disregards [BuildMetadata] and considers [Versions](Version) that differ only in [BuildMetadata]
+	equal. This comparison is what the SemVer spec refers to as "precedence".
+
+	Returns:
+	- -1 if `self` has lower precedence than `other`
+	- 0 if `self` and `other` have the same precedence
+	- 1 if `self` has higher precedence than `other`
+
+	The `CargoSemver.Ordering` enum (with the fields: `Less` = -1, `Equal` = 0, `Greater` = 1) can be used to clarify code using this method.
+
 	**Usage:**
 	```lua
-	local Ordering = CargoSemver.Ordering
-
 	if removedVersion:cmp_precedence(addedVersion) == Ordering.Greater then
 		warn("Downgrading", msg)
 	else

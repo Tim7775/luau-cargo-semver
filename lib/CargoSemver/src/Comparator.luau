@@ -137,11 +137,21 @@ function Comparator.interface.parse(input: string): Comparator
 	return result
 end
 
---- @within Comparator
+--[=[
+	@within Comparator
+	Returns `true` if `obj` is a [Comparator].
+]=]
 function Comparator.interface.is(obj: any): boolean
 	return type(obj) == "table" and getmetatable(obj) == Comparator.metatable
 end
 
+--[=[
+	@within Comparator
+	@method __eq
+	@param other Comparator
+	@return boolean
+	This metamethod tests for `self` and `other` values to be equal and is used by the operators `==` and `~=`.
+]=]
 function Comparator.metatable.__eq(self: Comparator, other: Comparator)
 	return self.op == other.op
 		and self.major == other.major
@@ -150,6 +160,12 @@ function Comparator.metatable.__eq(self: Comparator, other: Comparator)
 		and self.pre == other.pre
 end
 
+--[=[
+	@within Comparator
+	@method __tostring
+	@return string
+	This metamethod transforms `self` into a string.
+]=]
 function Comparator.metatable.__tostring(self: Comparator)
 	local result = if self.op == Operators.Wildcard then "" else self.op
 	result ..= self.major
@@ -314,10 +330,12 @@ local matchesImpl: { [Parse.Operator]: (Comparator, Version.Version) -> boolean 
 	[Operators.Wildcard] = matchesExact,
 }
 
---- @within Comparator
---- @method matches
---- @param ver Version
---- @return boolean
+--[=[
+	@within Comparator
+	@method matches
+	@param ver Version
+	@return boolean
+]=]
 function Comparator.prototype.matches(self: Comparator, ver: Version.Version): boolean
 	return matchesImpl[self.op](self, ver)
 end

@@ -44,7 +44,6 @@ VersionReq.prototype = {}
 VersionReq.metatable = { __index = VersionReq.prototype }
 
 local bComma = string.byte(",")
-
 --[=[
 	@within VersionReq
 	Possible reasons for the parse to fail include:
@@ -106,6 +105,7 @@ end
 
 --[=[
 	@within VersionReq
+	Returns `true` if `obj` is a [VersionReq].
 ]=]
 function VersionReq.interface.is(obj: any): boolean
 	return type(obj) == "table" and getmetatable(obj) == VersionReq.metatable
@@ -120,6 +120,7 @@ end
 	@method matches
 	@param ver Version
 	@return boolean
+	Evaluate whether the given [Version] satisfies the version requirement described by `self`.
 ]=]
 function VersionReq.prototype.matches(self: VersionReq, ver: Version.Version): boolean
 	for _, cmp in self.comparators do
@@ -144,6 +145,12 @@ function VersionReq.prototype.matches(self: VersionReq, ver: Version.Version): b
 	return false
 end
 
+--[=[
+	@within VersionReq
+	@method __tostring
+	@return string
+	This metamethod transforms `self` into a string.
+]=]
 function VersionReq.metatable.__tostring(self: VersionReq)
 	if next(self.comparators) == nil then
 		return "*"
@@ -155,6 +162,13 @@ function VersionReq.metatable.__tostring(self: VersionReq)
 	return table.concat(buffer, ", ")
 end
 
+--[=[
+	@within VersionReq
+	@method __eq
+	@param other VersionReq
+	@return boolean
+	This metamethod tests for `self` and `other` values to be equal and is used by the operators `==` and `~=`.
+]=]
 function VersionReq.metatable.__eq(self: VersionReq, other: VersionReq)
 	for _, comparator in ipairs(self.comparators) do
 		if not table.find(other.comparators, comparator) then

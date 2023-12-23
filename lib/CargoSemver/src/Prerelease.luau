@@ -48,7 +48,10 @@ function Prerelease.interface._new_unchecked(identifier: string): Prerelease
 	return table.freeze(self)
 end
 
---- @within Prerelease
+--[=[
+	@within Prerelease
+	Returns `true` if `obj` is a [Prerelease].
+]=]
 function Prerelease.interface.is(obj: any): boolean
 	return type(obj) == "table" and getmetatable(obj) == Prerelease.metatable
 end
@@ -62,14 +65,33 @@ function Prerelease.prototype.is_empty(self: Prerelease): boolean
 	return self.identifier == ""
 end
 
+--[=[
+	@within Prerelease
+	@method __tostring
+	@return string
+	This metamethod transforms `self` into a string.
+]=]
 function Prerelease.metatable.__tostring(self: Prerelease)
 	return self.identifier
 end
 
+--[=[
+	@within Prerelease
+	@method __len
+	@return number
+	This metamethod returns the length of `self` and is used by the `#` length operator.
+]=]
 function Prerelease.metatable.__len(self: Prerelease)
 	return #self.identifier
 end
 
+--[=[
+	@within Prerelease
+	@method __eq
+	@param other Prerelease
+	@return boolean
+	This metamethod tests for `self` and `other` values to be equal and is used by the operators `==` and `~=`.
+]=]
 function Prerelease.metatable.__eq(self: Prerelease, other: Prerelease)
 	return self.identifier == other.identifier
 end
@@ -88,6 +110,13 @@ local function getIdentifierInfo(identifier: string): (boolean, number)
 	return true, cursor
 end
 
+--[=[
+	@within Prerelease
+	@method __lt
+	@param other Prerelease
+	@return boolean
+	This metamethod tests less than (for `self` and `other`) and is used by the operators `<` and `>`.
+]=]
 function Prerelease.metatable.__lt(self: Prerelease, other: Prerelease)
 	--A real release compares greater than prerelease.
 	if self.identifier == other.identifier or self.identifier == "" then
@@ -134,6 +163,13 @@ function Prerelease.metatable.__lt(self: Prerelease, other: Prerelease)
 	end
 end
 
+--[=[
+	@within Prerelease
+	@method __le
+	@param other Prerelease
+	@return boolean
+	This metamethod tests less than or equal to (for `self` and `other`) and is used by the operators `<=` and `>=`.
+]=]
 function Prerelease.metatable.__le(self: Prerelease, other: Prerelease)
 	return self.identifier == other.identifier or self < other
 end

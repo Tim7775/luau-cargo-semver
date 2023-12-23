@@ -48,7 +48,10 @@ function BuildMetadata.interface._new_unchecked(identifier: string): BuildMetada
 	return table.freeze(self)
 end
 
---- @within BuildMetadata
+--[=[
+	@within BuildMetadata
+	Returns `true` if `obj` is [BuildMetadata].
+]=]
 function BuildMetadata.interface.is(obj: any): boolean
 	return type(obj) == "table" and getmetatable(obj) == BuildMetadata.metatable
 end
@@ -62,14 +65,33 @@ function BuildMetadata.prototype.is_empty(self: BuildMetadata): boolean
 	return self.identifier == ""
 end
 
+--[=[
+	@within BuildMetadata
+	@method __tostring
+	@return string
+	This metamethod transforms `self` into a string.
+]=]
 function BuildMetadata.metatable.__tostring(self: BuildMetadata)
 	return self.identifier
 end
 
+--[=[
+	@within BuildMetadata
+	@method __len
+	@return number
+	This metamethod returns the length of `self` and is used by the `#` length operator.
+]=]
 function BuildMetadata.metatable.__len(self: BuildMetadata)
 	return #self.identifier
 end
 
+--[=[
+	@within BuildMetadata
+	@method __eq
+	@param other BuildMetadata
+	@return boolean
+	This metamethod tests for `self` and `other` values to be equal and is used by the operators `==` and `~=`.
+]=]
 function BuildMetadata.metatable.__eq(self: BuildMetadata, other: BuildMetadata)
 	return self.identifier == other.identifier
 end
@@ -96,6 +118,13 @@ local function getIdentifierInfo(identifier: string): (boolean, number, number)
 	return true, numStart, cursor
 end
 
+--[=[
+	@within BuildMetadata
+	@method __lt
+	@param other BuildMetadata
+	@return boolean
+	This metamethod tests less than (for `self` and `other`) and is used by the operators `<` and `>`.
+]=]
 function BuildMetadata.metatable.__lt(self: BuildMetadata, other: BuildMetadata)
 	--A version with BuildMetadata compares greater than a version without BuildMetadata.
 	if self.identifier == other.identifier or other.identifier == "" then
@@ -141,6 +170,13 @@ function BuildMetadata.metatable.__lt(self: BuildMetadata, other: BuildMetadata)
 	end
 end
 
+--[=[
+	@within BuildMetadata
+	@method __le
+	@param other BuildMetadata
+	@return boolean
+	This metamethod tests less than or equal to (for `self` and `other`) and is used by the operators `<=` and `>=`.
+]=]
 function BuildMetadata.metatable.__le(self: BuildMetadata, other: BuildMetadata)
 	return self.identifier == other.identifier or self < other
 end
