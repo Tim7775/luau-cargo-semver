@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v2.3.1">
 <title data-rh="true">Semver | luau-cargo-semver</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://Tim7775.github.io/luau-cargo-semver/api/Semver"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Semver | luau-cargo-semver"><meta data-rh="true" name="description" content="An idiomatic Luau API wrapper for the Rust-style API found in `cargo-semver`."><meta data-rh="true" property="og:description" content="An idiomatic Luau API wrapper for the Rust-style API found in `cargo-semver`."><link data-rh="true" rel="canonical" href="https://Tim7775.github.io/luau-cargo-semver/api/Semver"><link data-rh="true" rel="alternate" href="https://Tim7775.github.io/luau-cargo-semver/api/Semver" hreflang="en"><link data-rh="true" rel="alternate" href="https://Tim7775.github.io/luau-cargo-semver/api/Semver" hreflang="x-default"><link rel="stylesheet" href="/luau-cargo-semver/assets/css/styles.d68860a6.css">
-<link rel="preload" href="/luau-cargo-semver/assets/js/runtime~main.38102dba.js" as="script">
-<link rel="preload" href="/luau-cargo-semver/assets/js/main.d8c8436d.js" as="script">
+<link rel="preload" href="/luau-cargo-semver/assets/js/runtime~main.db087b02.js" as="script">
+<link rel="preload" href="/luau-cargo-semver/assets/js/main.f92202a1.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -22,30 +22,36 @@ table<span class="token punctuation">.</span><span class="token function">sort</
 </code></pre>
 </div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="cmpPrecedence"><code style="text-decoration:none">cmpPrecedence</code><a href="#cmpPrecedence" class="hash-link" aria-label="Direct link to cmpPrecedence" title="Direct link to cmpPrecedence">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Tim7775/luau-cargo-semver/blob/main/lib/Semver/init.luau#L72"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Semver<!-- -->.</code><code class="green_DgR4">cmpPrecedence</code><code>(</code><div class="inset_uKQm"><div><code>lhs<!-- -->: </code><code class="blue_P4bS">string</code><code>,</code></div><div><code>op<!-- -->: </code><code class="blue_P4bS">&quot;</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">&quot;</code><code class="op_lSLc"> | </code><code class="blue_P4bS">&quot;</code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">=&quot;</code><code class="op_lSLc"> | </code><code class="blue_P4bS">&quot;==&quot;</code><code class="op_lSLc"> | </code><code class="blue_P4bS">&quot;</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">&quot;</code><code class="op_lSLc"> | </code><code class="blue_P4bS">&quot;</code><code class="op_lSLc">&gt;</code><code class="blue_P4bS">=&quot;</code><code class="op_lSLc"> | </code><code class="blue_P4bS">&quot;~=&quot;</code><code>,</code></div><div><code>rhs<!-- -->: </code><code class="blue_P4bS">string</code></div></div><code>) → </code><code class="blue_P4bS">boolean</code></div><div>
 <p>
-  Compare the major, minor, patch, and <a href="/luau-cargo-semver/api/Prerelease">Prerelease</a> value of two <a href="Version">Versions</a>,
-  disregarding <a href="/luau-cargo-semver/api/BuildMetadata">BuildMetadata</a>. Versions that differ only in build metadata
+  Compare the major, minor, patch and <a href="/luau-cargo-semver/api/Prerelease">Prerelease</a> value of two <a href="Version">Versions</a>,
+  disregarding <a href="/luau-cargo-semver/api/BuildMetadata">BuildMetadata</a>. <a href="Version">Versions</a> that differ only in <a href="/luau-cargo-semver/api/BuildMetadata">BuildMetadata</a>
   are considered equal. This comparison is what the SemVer spec refers to
   as "precedence".
 </p>
 <p><strong>Usage:</strong></p>
 <pre class="language-lua"><code class="language-lua"><span class="token function">assert</span><span class="token punctuation">(</span>Semver<span class="token punctuation">.</span><span class="token function">cmpPrecedence</span><span class="token punctuation">(</span>newVersion<span class="token punctuation">,</span> <span class="token string">">="</span><span class="token punctuation">,</span> oldVersion<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"newVersion must be >= oldVersion"</span><span class="token punctuation">)</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="getMaxMatching"><code style="text-decoration:none">getMaxMatching</code><a href="#getMaxMatching" class="hash-link" aria-label="Direct link to getMaxMatching" title="Direct link to getMaxMatching">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Tim7775/luau-cargo-semver/blob/main/lib/Semver/init.luau#L99"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Semver<!-- -->.</code><code class="green_DgR4">getMaxMatching</code><code>(</code><div class="inset_uKQm"><div><code>versions<!-- -->: </code><code class="purple_ieR2">{</code><code class="blue_P4bS">string</code><code class="purple_ieR2">}</code><code>,</code></div><div><code>versionReq<!-- -->: </code><code class="blue_P4bS">string</code></div></div><code>) → </code><code class="blue_P4bS">string?</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="getMaxMatching"><code style="text-decoration:none">getMaxMatching</code><a href="#getMaxMatching" class="hash-link" aria-label="Direct link to getMaxMatching" title="Direct link to getMaxMatching">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Tim7775/luau-cargo-semver/blob/main/lib/Semver/init.luau#L100"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Semver<!-- -->.</code><code class="green_DgR4">getMaxMatching</code><code>(</code><div class="inset_uKQm"><div><code>versions<!-- -->: </code><code class="purple_ieR2">{</code><code class="blue_P4bS">string</code><code class="purple_ieR2">}</code><code>,</code></div><div><code>versionReq<!-- -->: </code><code class="blue_P4bS">string</code></div></div><code>) → </code><code class="blue_P4bS">string?</code></div><div>
 <p><strong>Usage:</strong></p>
-<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> maxVersion <span class="token operator">=</span> Semver<span class="token punctuation">.</span><span class="token function">getMaxMatching</span><span class="token punctuation">(</span>versions<span class="token punctuation">,</span> req<span class="token punctuation">)</span>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> versions <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"3.1.2"</span><span class="token punctuation">,</span> <span class="token string">"0.3.0"</span><span class="token punctuation">,</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span> <span class="token string">"1.6.0"</span> <span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span>Semver<span class="token punctuation">.</span><span class="token function">getMaxMatching</span><span class="token punctuation">(</span>versions<span class="token punctuation">,</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">--> 1.6.0</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="getMinMatching"><code style="text-decoration:none">getMinMatching</code><a href="#getMinMatching" class="hash-link" aria-label="Direct link to getMinMatching" title="Direct link to getMinMatching">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Tim7775/luau-cargo-semver/blob/main/lib/Semver/init.luau#L119"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Semver<!-- -->.</code><code class="green_DgR4">getMinMatching</code><code>(</code><div class="inset_uKQm"><div><code>versions<!-- -->: </code><code class="purple_ieR2">{</code><code class="blue_P4bS">string</code><code class="purple_ieR2">}</code><code>,</code></div><div><code>versionReq<!-- -->: </code><code class="blue_P4bS">string</code></div></div><code>) → </code><code class="blue_P4bS">string?</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="getMinMatching"><code style="text-decoration:none">getMinMatching</code><a href="#getMinMatching" class="hash-link" aria-label="Direct link to getMinMatching" title="Direct link to getMinMatching">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Tim7775/luau-cargo-semver/blob/main/lib/Semver/init.luau#L121"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Semver<!-- -->.</code><code class="green_DgR4">getMinMatching</code><code>(</code><div class="inset_uKQm"><div><code>versions<!-- -->: </code><code class="purple_ieR2">{</code><code class="blue_P4bS">string</code><code class="purple_ieR2">}</code><code>,</code></div><div><code>versionReq<!-- -->: </code><code class="blue_P4bS">string</code></div></div><code>) → </code><code class="blue_P4bS">string?</code></div><div>
 <p><strong>Usage:</strong></p>
-<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> minVersion <span class="token operator">=</span> Semver<span class="token punctuation">.</span><span class="token function">getMinMatching</span><span class="token punctuation">(</span>versions<span class="token punctuation">,</span> req<span class="token punctuation">)</span>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> versions <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"3.1.2"</span><span class="token punctuation">,</span> <span class="token string">"0.3.0"</span><span class="token punctuation">,</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span> <span class="token string">"1.6.0"</span> <span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span>Semver<span class="token punctuation">.</span><span class="token function">getMinMatching</span><span class="token punctuation">(</span>versions<span class="token punctuation">,</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">--> 1.0.0</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="matches"><code style="text-decoration:none">matches</code><a href="#matches" class="hash-link" aria-label="Direct link to matches" title="Direct link to matches">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Tim7775/luau-cargo-semver/blob/main/lib/Semver/init.luau#L139"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Semver<!-- -->.</code><code class="green_DgR4">matches</code><code>(</code><div class="inset_uKQm"><div><code>version<!-- -->: </code><code class="blue_P4bS">string</code><code>,</code></div><div><code>versionReq<!-- -->: </code><code class="blue_P4bS">string</code></div></div><code>) → </code><code class="blue_P4bS">boolean</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="matches"><code style="text-decoration:none">matches</code><a href="#matches" class="hash-link" aria-label="Direct link to matches" title="Direct link to matches">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Tim7775/luau-cargo-semver/blob/main/lib/Semver/init.luau#L141"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Semver<!-- -->.</code><code class="green_DgR4">matches</code><code>(</code><div class="inset_uKQm"><div><code>version<!-- -->: </code><code class="blue_P4bS">string</code><code>,</code></div><div><code>versionReq<!-- -->: </code><code class="blue_P4bS">string</code></div></div><code>) → </code><code class="blue_P4bS">boolean</code></div><div>
 <p><strong>Usage:</strong></p>
-<pre class="language-lua"><code class="language-lua"><span class="token function">assert</span><span class="token punctuation">(</span>Semver<span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span>versionStr<span class="token punctuation">,</span> <span class="token string">"^1.0.4"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"version does not match requirement"</span><span class="token punctuation">)</span>
+<pre class="language-lua"><code class="language-lua"><span class="token function">assert</span><span class="token punctuation">(</span>Semver<span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span>versionStr<span class="token punctuation">,</span> <span class="token string">"^1.0.0"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"version does not match requirement"</span><span class="token punctuation">)</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="setMemoizationFunc"><code style="text-decoration:none">setMemoizationFunc</code><a href="#setMemoizationFunc" class="hash-link" aria-label="Direct link to setMemoizationFunc" title="Direct link to setMemoizationFunc">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Tim7775/luau-cargo-semver/blob/main/lib/Semver/init.luau#L164"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Semver<!-- -->.</code><code class="green_DgR4">setMemoizationFunc</code><code>(</code><div class="inset_uKQm"><div><code>objToMemoize<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/luau-cargo-semver/api/Version">&quot;Version&quot;</a></code><code class="op_lSLc"> | </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/luau-cargo-semver/api/VersionReq">&quot;VersionReq&quot;</a></code><code>,</code></div><div><code>memoizationFunc<!-- -->: </code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">T</code><code class="op_lSLc">&gt;</code><code class="purple_ieR2">(</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/luau-cargo-semver/api/Semver#parseFunc">parseFunc</a></code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">T</code><code class="op_lSLc">&gt;</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/luau-cargo-semver/api/Semver#parseFunc">parseFunc</a></code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">T</code><code class="op_lSLc">&gt;</code></div></div><code>) → </code><code>(</code><code>)</code></div><h3>Types</h3><h3 class="anchor anchorWithStickyNavbar_LWe7" id="parseFunc"><a href="#parseFunc" class="hash-link" aria-label="Direct link to parseFunc" title="Direct link to parseFunc">​</a></h3><div class="memberString_GwaU"><code class="purple_ieR2">type</code> <code>parseFunc<!-- --> = </code> <code class="op_lSLc">&lt;</code><code class="blue_P4bS">T</code><code class="op_lSLc">&gt;</code><code class="purple_ieR2">(</code><code class="blue_P4bS">string</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="blue_P4bS">T</code></div><div></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="setMemoizationFunc"><code style="text-decoration:none">setMemoizationFunc</code><a href="#setMemoizationFunc" class="hash-link" aria-label="Direct link to setMemoizationFunc" title="Direct link to setMemoizationFunc">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Tim7775/luau-cargo-semver/blob/main/lib/Semver/init.luau#L164"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Semver<!-- -->.</code><code class="green_DgR4">setMemoizationFunc</code><code>(</code><div class="inset_uKQm"><div><code>objToMemoize<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/luau-cargo-semver/api/Version">&quot;Version&quot;</a></code><code class="op_lSLc"> | </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/luau-cargo-semver/api/VersionReq">&quot;VersionReq&quot;</a></code><code>,</code></div><div><code>memoizationFunc<!-- -->: </code><code class="op_lSLc">&lt;</code><code class="blue_P4bS">T</code><code class="op_lSLc">&gt;</code><code class="purple_ieR2">(</code><code class="green_DgR4">(</code><code class="blue_P4bS">string</code><code class="green_DgR4">)</code><code class="green_DgR4"> → </code><code class="blue_P4bS">T</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="blue_P4bS">string</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="blue_P4bS">T</code></div></div><code>) → </code><code>(</code><code>)</code></div><div>
 <p>
-  The performance of the Semver library can be improved by setting a memoization function. Memoization functions can prevent repeated parsing of semver strings
-  (Note: Memoization functions can be found in the <a href="https://github.com/tim7775/luau-caching-and-memoization" target="_blank">luau-caching-and-memoization</a> repository).
+  Registers a memoization function for <a href="/luau-cargo-semver/api/Version#parse">Version.parse</a> or <a href="/luau-cargo-semver/api/VersionReq#parse">VersionReq.parse</a>,
+  this can prevent repeated parsing of semver strings and greatly improve the performance of the <a href="/luau-cargo-semver/api/Semver">Semver</a> library.
+</p>
+<p>
+  <strong>💡 Tip:</strong>
+  Memoization functions can be found in the <a href="https://github.com/tim7775/luau-caching-and-memoization" target="_blank">luau-caching-and-memoization</a> repository.
 </p>
 <p><strong>Usage:</strong></p>
 <pre class="language-lua"><code class="language-lua">Semver<span class="token punctuation">.</span><span class="token function">setMemoizationFunc</span><span class="token punctuation">(</span><span class="token string">"Version"</span><span class="token punctuation">,</span> memoizeFrame<span class="token punctuation">)</span>
@@ -53,13 +59,15 @@ Semver<span class="token punctuation">.</span><span class="token function">setMe
 	<span class="token keyword">return</span> <span class="token function">memoizeRecentlyUsed</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">,</span> parseFunc<span class="token punctuation">)</span>
 <span class="token keyword">end</span><span class="token punctuation">)</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="validateVersion"><code style="text-decoration:none">validateVersion</code><a href="#validateVersion" class="hash-link" aria-label="Direct link to validateVersion" title="Direct link to validateVersion">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Tim7775/luau-cargo-semver/blob/main/lib/Semver/init.luau#L178"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Semver<!-- -->.</code><code class="green_DgR4">validateVersion</code><code>(</code><code>version<!-- -->: </code><code class="blue_P4bS">string</code><code>) → </code><code>(</code><div class="inset_uKQm"><div><code class="blue_P4bS">boolean</code><code>,</code></div><div><code class="blue_P4bS">string?</code></div></div><code>)</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="validateVersion"><code style="text-decoration:none">validateVersion</code><a href="#validateVersion" class="hash-link" aria-label="Direct link to validateVersion" title="Direct link to validateVersion">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Tim7775/luau-cargo-semver/blob/main/lib/Semver/init.luau#L179"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Semver<!-- -->.</code><code class="green_DgR4">validateVersion</code><code>(</code><code>version<!-- -->: </code><code class="blue_P4bS">string</code><code>) → </code><code>(</code><div class="inset_uKQm"><div><code class="blue_P4bS">boolean</code><code>,</code></div><div><code class="blue_P4bS">string?</code></div></div><code>)</code></div><div>
 <p><strong>Usage:</strong></p>
-<pre class="language-lua"><code class="language-lua"><span class="token function">assert</span><span class="token punctuation">(</span>Semver<span class="token punctuation">.</span><span class="token function">validateVersion</span><span class="token punctuation">(</span>versionStr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<pre class="language-lua"><code class="language-lua"><span class="token function">assert</span><span class="token punctuation">(</span>Semver<span class="token punctuation">.</span><span class="token function">validateVersion</span><span class="token punctuation">(</span><span class="token string">"1.0"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">--> Error: unexpected end of input while parsing minor version number</span>
 </code></pre>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="validateVersionReq"><code style="text-decoration:none">validateVersionReq</code><a href="#validateVersionReq" class="hash-link" aria-label="Direct link to validateVersionReq" title="Direct link to validateVersionReq">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Tim7775/luau-cargo-semver/blob/main/lib/Semver/init.luau#L189"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Semver<!-- -->.</code><code class="green_DgR4">validateVersionReq</code><code>(</code><code>versionReq<!-- -->: </code><code class="blue_P4bS">string</code><code>) → </code><code>(</code><div class="inset_uKQm"><div><code class="blue_P4bS">boolean</code><code>,</code></div><div><code class="blue_P4bS">string?</code></div></div><code>)</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="validateVersionReq"><code style="text-decoration:none">validateVersionReq</code><a href="#validateVersionReq" class="hash-link" aria-label="Direct link to validateVersionReq" title="Direct link to validateVersionReq">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Tim7775/luau-cargo-semver/blob/main/lib/Semver/init.luau#L191"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Semver<!-- -->.</code><code class="green_DgR4">validateVersionReq</code><code>(</code><code>versionReq<!-- -->: </code><code class="blue_P4bS">string</code><code>) → </code><code>(</code><div class="inset_uKQm"><div><code class="blue_P4bS">boolean</code><code>,</code></div><div><code class="blue_P4bS">string?</code></div></div><code>)</code></div><div>
 <p><strong>Usage:</strong></p>
-<pre class="language-lua"><code class="language-lua"><span class="token function">assert</span><span class="token punctuation">(</span>Semver<span class="token punctuation">.</span><span class="token function">validateVersionReq</span><span class="token punctuation">(</span>reqStr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<pre class="language-lua"><code class="language-lua"><span class="token function">assert</span><span class="token punctuation">(</span>Semver<span class="token punctuation">.</span><span class="token function">validateVersionReq</span><span class="token punctuation">(</span><span class="token string">"1.0.a"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">--> Error: unexpected character 'a' while parsing patch version number</span>
 </code></pre>
 </div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
     &quot;functions&quot;: [
@@ -97,7 +105,7 @@ Semver<span class="token punctuation">.</span><span class="token function">setMe
         },
         {
             &quot;name&quot;: &quot;cmpPrecedence&quot;,
-            &quot;desc&quot;: &quot;Compare the major, minor, patch, and [Prerelease] value of two [Versions](Version),\ndisregarding [BuildMetadata]. Versions that differ only in build metadata\nare considered equal. This comparison is what the SemVer spec refers to\nas \&quot;precedence\&quot;.\n\n**Usage:**\n```lua\nassert(Semver.cmpPrecedence(newVersion, \&quot;&gt;=\&quot;, oldVersion), \&quot;newVersion must be &gt;= oldVersion\&quot;)\n```&quot;,
+            &quot;desc&quot;: &quot;Compare the major, minor, patch and [Prerelease] value of two [Versions](Version),\ndisregarding [BuildMetadata]. [Versions](Version) that differ only in [BuildMetadata]\nare considered equal. This comparison is what the SemVer spec refers to\nas \&quot;precedence\&quot;.\n\n**Usage:**\n```lua\nassert(Semver.cmpPrecedence(newVersion, \&quot;&gt;=\&quot;, oldVersion), \&quot;newVersion must be &gt;= oldVersion\&quot;)\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;lhs&quot;,
@@ -129,7 +137,7 @@ Semver<span class="token punctuation">.</span><span class="token function">setMe
         },
         {
             &quot;name&quot;: &quot;getMaxMatching&quot;,
-            &quot;desc&quot;: &quot;**Usage:**\n```lua\nlocal maxVersion = Semver.getMaxMatching(versions, req)\n```&quot;,
+            &quot;desc&quot;: &quot;**Usage:**\n```lua\nlocal versions = { \&quot;3.1.2\&quot;, \&quot;0.3.0\&quot;, \&quot;1.0.0\&quot;, \&quot;1.6.0\&quot; }\nprint(Semver.getMaxMatching(versions, \&quot;^1.0.0\&quot;)) --&gt; 1.6.0\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;versions&quot;,
@@ -150,13 +158,13 @@ Semver<span class="token punctuation">.</span><span class="token function">setMe
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 99,
+                &quot;line&quot;: 100,
                 &quot;path&quot;: &quot;lib/Semver/init.luau&quot;
             }
         },
         {
             &quot;name&quot;: &quot;getMinMatching&quot;,
-            &quot;desc&quot;: &quot;**Usage:**\n```lua\nlocal minVersion = Semver.getMinMatching(versions, req)\n```&quot;,
+            &quot;desc&quot;: &quot;**Usage:**\n```lua\nlocal versions = { \&quot;3.1.2\&quot;, \&quot;0.3.0\&quot;, \&quot;1.0.0\&quot;, \&quot;1.6.0\&quot; }\nprint(Semver.getMinMatching(versions, \&quot;^1.0.0\&quot;)) --&gt; 1.0.0\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;versions&quot;,
@@ -177,13 +185,13 @@ Semver<span class="token punctuation">.</span><span class="token function">setMe
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 119,
+                &quot;line&quot;: 121,
                 &quot;path&quot;: &quot;lib/Semver/init.luau&quot;
             }
         },
         {
             &quot;name&quot;: &quot;matches&quot;,
-            &quot;desc&quot;: &quot;**Usage:**\n```lua\nassert(Semver.matches(versionStr, \&quot;^1.0.4\&quot;), \&quot;version does not match requirement\&quot;)\n```&quot;,
+            &quot;desc&quot;: &quot;**Usage:**\n```lua\nassert(Semver.matches(versionStr, \&quot;^1.0.0\&quot;), \&quot;version does not match requirement\&quot;)\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;version&quot;,
@@ -204,13 +212,13 @@ Semver<span class="token punctuation">.</span><span class="token function">setMe
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 139,
+                &quot;line&quot;: 141,
                 &quot;path&quot;: &quot;lib/Semver/init.luau&quot;
             }
         },
         {
             &quot;name&quot;: &quot;setMemoizationFunc&quot;,
-            &quot;desc&quot;: &quot;The performance of the Semver library can be improved by setting a memoization function. Memoization functions can prevent repeated parsing of semver strings\n(Note: Memoization functions can be found in the [luau-caching-and-memoization](https://github.com/tim7775/luau-caching-and-memoization) repository).\n\n**Usage:**\n```lua\nSemver.setMemoizationFunc(\&quot;Version\&quot;, memoizeFrame)\nSemver.setMemoizationFunc(\&quot;VersionReq\&quot;, function(parseFunc)\n\treturn memoizeRecentlyUsed(50, parseFunc)\nend)\n```&quot;,
+            &quot;desc&quot;: &quot;Registers a memoization function for [Version.parse] or [VersionReq.parse],\nthis can prevent repeated parsing of semver strings and greatly improve the performance of the [Semver] library.\n\n**💡 Tip:**\nMemoization functions can be found in the [luau-caching-and-memoization](https://github.com/tim7775/luau-caching-and-memoization) repository.\n\n**Usage:**\n```lua\nSemver.setMemoizationFunc(\&quot;Version\&quot;, memoizeFrame)\nSemver.setMemoizationFunc(\&quot;VersionReq\&quot;, function(parseFunc)\n\treturn memoizeRecentlyUsed(50, parseFunc)\nend)\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;objToMemoize&quot;,
@@ -220,7 +228,7 @@ Semver<span class="token punctuation">.</span><span class="token function">setMe
                 {
                     &quot;name&quot;: &quot;memoizationFunc&quot;,
                     &quot;desc&quot;: &quot;&quot;,
-                    &quot;lua_type&quot;: &quot;&lt;T&gt;(parseFunc&lt;T&gt;)-&gt;parseFunc&lt;T&gt;&quot;
+                    &quot;lua_type&quot;: &quot;&lt;T&gt;((string) -&gt; T)-&gt;(string) -&gt; T&quot;
                 }
             ],
             &quot;returns&quot;: [],
@@ -232,7 +240,7 @@ Semver<span class="token punctuation">.</span><span class="token function">setMe
         },
         {
             &quot;name&quot;: &quot;validateVersion&quot;,
-            &quot;desc&quot;: &quot;**Usage:**\n```lua\nassert(Semver.validateVersion(versionStr))\n```&quot;,
+            &quot;desc&quot;: &quot;**Usage:**\n```lua\nassert(Semver.validateVersion(\&quot;1.0\&quot;))\n--&gt; Error: unexpected end of input while parsing minor version number\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;version&quot;,
@@ -252,13 +260,13 @@ Semver<span class="token punctuation">.</span><span class="token function">setMe
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 178,
+                &quot;line&quot;: 179,
                 &quot;path&quot;: &quot;lib/Semver/init.luau&quot;
             }
         },
         {
             &quot;name&quot;: &quot;validateVersionReq&quot;,
-            &quot;desc&quot;: &quot;**Usage:**\n```lua\nassert(Semver.validateVersionReq(reqStr))\n```&quot;,
+            &quot;desc&quot;: &quot;**Usage:**\n```lua\nassert(Semver.validateVersionReq(\&quot;1.0.a\&quot;))\n--&gt; Error: unexpected character &#x27;a&#x27; while parsing patch version number\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;versionReq&quot;,
@@ -278,31 +286,21 @@ Semver<span class="token punctuation">.</span><span class="token function">setMe
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 189,
+                &quot;line&quot;: 191,
                 &quot;path&quot;: &quot;lib/Semver/init.luau&quot;
             }
         }
     ],
     &quot;properties&quot;: [],
-    &quot;types&quot;: [
-        {
-            &quot;name&quot;: &quot;parseFunc&quot;,
-            &quot;desc&quot;: &quot;&quot;,
-            &quot;lua_type&quot;: &quot;&lt;T&gt;(string)-&gt;T&quot;,
-            &quot;source&quot;: {
-                &quot;line&quot;: 149,
-                &quot;path&quot;: &quot;lib/Semver/init.luau&quot;
-            }
-        }
-    ],
+    &quot;types&quot;: [],
     &quot;name&quot;: &quot;Semver&quot;,
     &quot;desc&quot;: &quot;An idiomatic Luau API wrapper for the Rust-style API found in `cargo-semver`.&quot;,
     &quot;source&quot;: {
         &quot;line&quot;: 27,
         &quot;path&quot;: &quot;lib/Semver/init.luau&quot;
     }
-}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#parseFunc" class="table-of-contents__link toc-highlight">parseFunc</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#cmp" class="table-of-contents__link toc-highlight">.cmp</a></li><li><a href="#cmpPrecedence" class="table-of-contents__link toc-highlight">.cmpPrecedence</a></li><li><a href="#getMaxMatching" class="table-of-contents__link toc-highlight">.getMaxMatching</a></li><li><a href="#getMinMatching" class="table-of-contents__link toc-highlight">.getMinMatching</a></li><li><a href="#matches" class="table-of-contents__link toc-highlight">.matches</a></li><li><a href="#setMemoizationFunc" class="table-of-contents__link toc-highlight">.setMemoizationFunc</a></li><li><a href="#validateVersion" class="table-of-contents__link toc-highlight">.validateVersion</a></li><li><a href="#validateVersionReq" class="table-of-contents__link toc-highlight">.validateVersionReq</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2023 Tim7775. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
-<script src="/luau-cargo-semver/assets/js/runtime~main.38102dba.js"></script>
-<script src="/luau-cargo-semver/assets/js/main.d8c8436d.js"></script>
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#cmp" class="table-of-contents__link toc-highlight">.cmp</a></li><li><a href="#cmpPrecedence" class="table-of-contents__link toc-highlight">.cmpPrecedence</a></li><li><a href="#getMaxMatching" class="table-of-contents__link toc-highlight">.getMaxMatching</a></li><li><a href="#getMinMatching" class="table-of-contents__link toc-highlight">.getMinMatching</a></li><li><a href="#matches" class="table-of-contents__link toc-highlight">.matches</a></li><li><a href="#setMemoizationFunc" class="table-of-contents__link toc-highlight">.setMemoizationFunc</a></li><li><a href="#validateVersion" class="table-of-contents__link toc-highlight">.validateVersion</a></li><li><a href="#validateVersionReq" class="table-of-contents__link toc-highlight">.validateVersionReq</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2023 Tim7775. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+<script src="/luau-cargo-semver/assets/js/runtime~main.db087b02.js"></script>
+<script src="/luau-cargo-semver/assets/js/main.f92202a1.js"></script>
 </body>
 </html>
