@@ -3,8 +3,10 @@ sidebar_position: 5
 ---
 
 # Memoization
-
-The performance of the [Semver](../api/Semver) library can be improved by registering memoization functions. Memoization functions can prevent repeated parsing of the same [Version](../api/Version) or [VersionReq](../api/VersionReq) string.
+To improve the performance of the [Semver](../api/Semver) library,
+you can register memoization functions using [Semver.setMemoizationFunc](../api/Semver#setMemoizationFunc).
+Memoization functions registered with this function cache the results of [Version.parse](../api/Version#parse)
+or [VersionReq.parse](../api/VersionReq#parse), which can prevent repeated parsing of semver strings.
 
 > **:bulb: Tip:**  
 > Memoization functions can be found in the [luau-caching-and-memoization](https://github.com/tim7775/luau-caching-and-memoization) repository.

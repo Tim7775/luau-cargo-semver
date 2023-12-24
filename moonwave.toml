@@ -5,7 +5,7 @@ section = "CargoSemver"
 classes = ["Version", "Prerelease", "BuildMetadata", "VersionReq", "Comparator"]
 
 [docusaurus]
-tagline = "A parser and evaluator for Cargo's flavor of Semantic Versioning."
+tagline = "A parser and evaluator for Cargo's flavor of Semantic Versioning"
 
 [home]
 enabled = true
@@ -17,8 +17,8 @@ description = "Provides a simple and idiomatic Luau API wrapper for the low-leve
 
 [[home.features]]
 title = "Robust"
-description = "Passes every test included in dtolnay/semver."
+description = "Passes every test included in the original Rust crate."
 
 [[home.features]]
 title = "Performant"
-description = "Parses semantic versions without creating any unnecessary substrings."
+description = "Achieves great performance by parsing and evaluating semantic versions without creating unnecessary substrings."
