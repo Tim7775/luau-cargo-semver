@@ -59,8 +59,8 @@ function Semver.cmp(lhs: string, op: "<" | "<=" | "==" | ">" | ">=" | "~=", rhs:
 end
 
 --[=[
-	Compare the major, minor, patch, and [Prerelease] value of two [Versions](Version),
-	disregarding [BuildMetadata]. Versions that differ only in build metadata
+	Compare the major, minor, patch and [Prerelease] value of two [Versions](Version),
+	disregarding [BuildMetadata]. [Versions](Version) that differ only in [BuildMetadata]
 	are considered equal. This comparison is what the SemVer spec refers to
 	as "precedence".
 
@@ -93,7 +93,8 @@ end
 --[=[
 	**Usage:**
 	```lua
-	local maxVersion = Semver.getMaxMatching(versions, req)
+	local versions = { "3.1.2", "0.3.0", "1.0.0", "1.6.0" }
+	print(Semver.getMaxMatching(versions, "^1.0.0")) --> 1.6.0
 	```
 ]=]
 function Semver.getMaxMatching(versions: { string }, versionReq: string): string?
@@ -113,7 +114,8 @@ end
 --[=[
 	**Usage:**
 	```lua
-	local minVersion = Semver.getMinMatching(versions, req)
+	local versions = { "3.1.2", "0.3.0", "1.0.0", "1.6.0" }
+	print(Semver.getMinMatching(versions, "^1.0.0")) --> 1.0.0
 	```
 ]=]
 function Semver.getMinMatching(versions: { string }, versionReq: string): string?
@@ -133,7 +135,7 @@ end
 --[=[
 	**Usage:**
 	```lua
-	assert(Semver.matches(versionStr, "^1.0.4"), "version does not match requirement")
+	assert(Semver.matches(versionStr, "^1.0.0"), "version does not match requirement")
 	```
 ]=]
 function Semver.matches(version: string, versionReq: string): boolean
@@ -142,16 +144,14 @@ function Semver.matches(version: string, versionReq: string): boolean
 	return req:matches(ver)
 end
 
---[=[
-	@within Semver
-	@type parseFunc <T>(string)->T
-]=]
 type parseFunc = (string) -> any
-
 --[=[
-	@param memoizationFunc <T>(parseFunc<T>)->parseFunc<T>
-	The performance of the Semver library can be improved by setting a memoization function. Memoization functions can prevent repeated parsing of semver strings
-	(Note: Memoization functions can be found in the [luau-caching-and-memoization](https://github.com/tim7775/luau-caching-and-memoization) repository).
+	@param memoizationFunc <T>((string) -> T)->(string) -> T
+	Registers a memoization function for [Version.parse] or [VersionReq.parse],
+	this can prevent repeated parsing of semver strings and greatly improve the performance of the [Semver] library.
+
+	**💡 Tip:**
+	Memoization functions can be found in the [luau-caching-and-memoization](https://github.com/tim7775/luau-caching-and-memoization) repository.
 
 	**Usage:**
 	```lua
@@ -172,7 +172,8 @@ end
 --[=[
 	**Usage:**
 	```lua
-	assert(Semver.validateVersion(versionStr))
+	assert(Semver.validateVersion("1.0"))
+	--> Error: unexpected end of input while parsing minor version number
 	```
 ]=]
 function Semver.validateVersion(version: string): (boolean, string?)
@@ -183,7 +184,8 @@ end
 --[=[
 	**Usage:**
 	```lua
-	assert(Semver.validateVersionReq(reqStr))
+	assert(Semver.validateVersionReq("1.0.a"))
+	--> Error: unexpected character 'a' while parsing patch version number
 	```
 ]=]
 function Semver.validateVersionReq(versionReq: string): (boolean, string?)
