@@ -7,7 +7,6 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 
 [*.{luau,lua,ts}]
-sort_requires = true
 indent_style = tab
 indent_size = 4
 
