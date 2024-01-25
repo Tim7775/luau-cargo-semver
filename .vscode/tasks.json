@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "Build",
+      "command": "lune run build-roblox-source; rojo build roblox-model.project.json -o luau-cargo-semver.rbxm",
+      "group": {
+        "kind": "build",
+        "isDefault": true,
+      },
+    },
+    {
+      "type": "shell",
+      "label": "Test",
+      "command": "lune run tests",
+      "group": {
+        "kind": "test",
+        "isDefault": true,
+      },
+    },
+  ],
+}
