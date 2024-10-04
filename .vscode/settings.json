@@ -13,10 +13,10 @@
     "editor.formatOnSave": true,
   },
   "stylua.targetReleaseVersion": "v0.20.0",
-  "luau-lsp.types.roblox": false,
+  "luau-lsp.platform.type": "standard",
   "luau-lsp.require.mode": "relativeToFile",
   "luau-lsp.types.definitionFiles": ["testez.d.luau"],
   "luau-lsp.require.directoryAliases": {
-    "@lune/": "~/.lune/.typedefs/0.8.0/",
+    "@lune/": "~/.lune/.typedefs/0.8.8/",
   },
 }
