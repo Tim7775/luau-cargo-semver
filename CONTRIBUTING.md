@@ -1,7 +1,7 @@
 ### Project Setup
-[Aftman](https://github.com/LPGhatguy/aftman) and [Node.js](https://nodejs.org) are required to setup the project.
+[Rokit](https://github.com/rojo-rbx/rokit) and [Node.js](https://nodejs.org) are required to setup the project.
 
-- Run `aftman install` in the project directory to install the required tools.
+- Run `rokit install` in the project directory to install the required tools.
 - Run `npm install` to install npm dependencies.
 - Run `lune setup` to generate Luau type definitions for the installed version of Lune.
 
