@@ -6,6 +6,7 @@ license = "MIT"
 authors = ["Tim7775"]
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
+exclude = ["node_modules", "package.json", "**/*.ts"]
 private = true #robloxify
 
 [dependencies]

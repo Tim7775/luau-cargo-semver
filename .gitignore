@@ -21,10 +21,9 @@ Thumbs.db
 /roblox-sourcemap.json
 
 # Generated Roblox source
-/test/roblox-source/
-# Wally dependencies
-/test/wally.lock
-/test/Packages/
+/test/*
+!/test/wally.toml
+!/test/run.server.luau
 
 # Moonwave build
 /build/

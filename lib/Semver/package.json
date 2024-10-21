@@ -1,0 +1,30 @@
+{
+  "author": "Tim7775",
+  "description": "A parser and evaluator for Cargo's flavor of Semantic Versioning",
+  "files": [
+    "./*",
+    "!wally.toml",
+    "!*.spec.luau"
+  ],
+  "keywords": [
+    "semantic",
+    "version",
+    "versioning",
+    "semver",
+    "cargo"
+  ],
+  "license": "MIT",
+  "main": "init.luau",
+  "name": "@rbxts/cargo-semver",
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tim7775/luau-cargo-semver.git"
+  },
+  "scripts": {},
+  "types": "index.d.ts",
+  "version": "0.1.0"
+}
