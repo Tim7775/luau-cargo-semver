@@ -1,9 +1,6 @@
 {
   "files.eol": "\n",
   "files.insertFinalNewline": true,
-  "files.exclude": {
-    "node_modules/": true,
-  },
   "[typescript][json][jsonc][yaml][github-actions-workflow]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
