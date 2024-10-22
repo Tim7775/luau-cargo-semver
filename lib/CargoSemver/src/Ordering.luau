@@ -15,8 +15,11 @@
 	* limitations under the License.
 ]]
 
-return table.freeze(setmetatable({ Less = -1, Equal = 0, Greater = 1 }, {
-	__index = function(_, index)
-		error(`{index} is not a valid member of Ordering`)
-	end,
-}))
+return table.freeze(setmetatable(
+	{ Less = -1, Equal = 0, Greater = 1 },
+	table.freeze({
+		__index = function(_, index)
+			error(`{index} is not a valid member of Ordering`)
+		end,
+	})
+))

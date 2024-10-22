@@ -21,14 +21,13 @@ export type Pos =
 	| "patch version number"
 	| "pre-release identifier"
 	| "build metadata"
-local Position = {
+local Position = table.freeze({
 	Major = "major version number" :: Pos,
 	Minor = "minor version number" :: Pos,
 	Patch = "patch version number" :: Pos,
 	Pre = "pre-release identifier" :: Pos,
 	Build = "build metadata" :: Pos,
-}
-table.freeze(Position)
+})
 
 --[[
 	Note that Luau only has a single number type,
@@ -46,7 +45,7 @@ local Bounds = table.freeze({
 })
 
 --stylua: ignore
-local SPECIAL_CHARACTERS = {
+local SPECIAL_CHARACTERS = table.freeze{
 	["\a"] = "\\a", ["\b"] = "\\b", ["\f"] = "\\f", ["\n"] = "\\n", ["\r"] = "\\r",
 	["\t"] = "\\t", ["\v"] = "\\v", ["\0"] = "\\0", ["'"] = "\\'", ["\\"] = "\\\\",
 }
