@@ -180,7 +180,7 @@ function Comparator.metatable.__tostring(self: Comparator)
 		result ..= ".*"
 	end
 	if not self.pre:is_empty() then
-		result ..= "-" .. tostring(self.pre)
+		result ..= "-" .. self.pre.identifier
 	end
 	return result
 end
