@@ -1,11 +1,15 @@
 {
   "author": "Tim7775",
+  "bugs": {
+    "url": "https://github.com/Tim7775/luau-cargo-semver/issues"
+  },
   "description": "A parser and evaluator for Cargo's flavor of Semantic Versioning",
   "files": [
     "./*",
     "!wally.toml",
     "!*.spec.luau"
   ],
+  "homepage": "https://tim7775.github.io/luau-cargo-semver/",
   "keywords": [
     "semantic",
     "version",
@@ -26,5 +30,5 @@
   },
   "scripts": {},
   "types": "index.d.ts",
-  "version": "0.1.0"
+  "version": "1.0.20"
 }
