@@ -1,7 +1,7 @@
 <div align="center">
 
 # luau-cargo-semver
-[![CI](https://github.com/Tim7775/luau-cargo-semver/actions/workflows/ci.yml/badge.svg)](https://github.com/Tim7775/luau-cargo-semver/actions/workflows/ci.yml) [![Wally](https://img.shields.io/badge/Wally-v1.0.0-AD4646)](https://wally.run/package/tim7775/semver?version=1.0.0) [![Docs](https://github.com/Tim7775/luau-cargo-semver/actions/workflows/docs.yml/badge.svg)](https://tim7775.github.io/luau-cargo-semver/)<br>
+[![CI](https://github.com/Tim7775/luau-cargo-semver/actions/workflows/ci.yml/badge.svg)](https://github.com/Tim7775/luau-cargo-semver/actions/workflows/ci.yml) [![Wally](https://img.shields.io/badge/Wally-v1.0.0-AD4646)](https://wally.run/package/tim7775/semver?version=1.0.0) [![NPM](https://img.shields.io/npm/v/%40rbxts%2Fcargo-semver)](https://www.npmjs.com/package/@rbxts/cargo-semver) [![Docs](https://github.com/Tim7775/luau-cargo-semver/actions/workflows/docs.yml/badge.svg)](https://tim7775.github.io/luau-cargo-semver/)<br>
 **A parser and evaluator for Cargo's flavor of Semantic Versioning**
 
 [**View docs →**](https://tim7775.github.io/luau-cargo-semver/)
