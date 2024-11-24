@@ -22,7 +22,9 @@ Add Semver to your `wally.toml` dependency list:
 Semver = "tim7775/semver@1"
 ```
 
-Require Semver like any other module grabbed from Wally.
+Then run `wally install` within your project.
+
+Semver can now be required like any other module grabbed from Wally.
 
 > **:information_source: Note:**  
 > Not familiar with Wally? Wally is a package manager (like npm) for the Roblox ecosystem.
@@ -32,3 +34,15 @@ To get started, check out the [Wally repository](https://github.com/UpliftGames/
 1. Visit the [latest release](https://github.com/Tim7775/luau-cargo-semver/releases/latest)
 2. Under *Assets*, click `luau-cargo-semver.rbxm`
 3. Open Roblox Studio and drag the file into the explorer
+
+### Method 4 - npm (roblox-ts)
+Run the following command to install the cargo-semver roblox-ts package:
+```bash
+npm install @rbxts/cargo-semver
+```
+
+Semver can now be imported and used as follows:
+```typescript
+import Semver from "@rbxts/cargo-semver"
+const [ok, message] = Semver.validateVersion("1.0.0")
+```
