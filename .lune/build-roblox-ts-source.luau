@@ -9,6 +9,9 @@ robloxify("lib", "test/roblox-ts-source")
 fs.removeFile("test/roblox-ts-source/CargoSemver/wally.toml")
 fs.removeFile("test/roblox-ts-source/Semver/wally.toml")
 
+--Insert Roblox-ts README
+fs.copy("docs/_roblox-ts-readme.md", "test/roblox-ts-source/Semver/README.md", true)
+
 --Restructure directory
 local sourceDir = "test/roblox-ts-source/Semver/"
 local targetDir = "test/roblox-ts-source/"
