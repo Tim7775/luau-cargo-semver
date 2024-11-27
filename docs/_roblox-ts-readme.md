@@ -1,5 +1,5 @@
 ## About
-The goal of this library is to replicate the exact behavior of the Rust crate [`semver`](https://crates.io/crates/semver) (currently `v1.0.20`) used by [Cargo](https://github.com/rust-lang/cargo) (and [Wally](https://github.com/UpliftGames/wally), [Foreman](https://github.com/Roblox/foreman) and [Rokit](https://github.com/rojo-rbx/rokit)). It succeeds in this with only minor deviations that should only ever present themselves when dealing with hostile user input.
+The goal of this library is to replicate the exact behavior of the Rust crate [`semver`](https://crates.io/crates/semver) (currently `v1.0.21`) used by [Cargo](https://github.com/rust-lang/cargo) (and [Wally](https://github.com/UpliftGames/wally), [Foreman](https://github.com/Roblox/foreman) and [Rokit](https://github.com/rojo-rbx/rokit)). It succeeds in this with only minor deviations that should only ever present themselves when dealing with hostile user input.
 
 #### Deviations from Cargo's semver:
 1. Identifiers ([Prerelease](https://tim7775.github.io/luau-cargo-semver/api/Prerelease) and [BuildMetadata](https://tim7775.github.io/luau-cargo-semver/api/BuildMetadata)) have a maximum length of 512 characters (Note: This should be more than enough for all use cases. For context, npm has a limit of 256 characters for the complete semver string).
@@ -18,7 +18,7 @@ assert(!Semver.matches("1.2.3-alpha.1", req), "assertion failed!");
 assert(Semver.matches("1.3.0", req), "assertion failed!");
 
 // Compare versions
-assert(Semver.cmp("1.3.0", "~=", "1.3.0+build"), "assertion failed!");
+assert(Semver.cmp("1.3.0", "!=", "1.3.0+build"), "assertion failed!");
 assert(Semver.cmpPrecedence("1.3.0", "==", "1.3.0+build"), "assertion failed!");
 
 // Sort versions array

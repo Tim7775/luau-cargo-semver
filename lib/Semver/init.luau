@@ -51,7 +51,7 @@ function Semver.cmp(lhs: string, op: "<" | "<=" | "==" | ">" | ">=" | "~=", rhs:
 		return lhsVer <= rhsVer
 	elseif op == ">=" then
 		return lhsVer >= rhsVer
-	elseif op == "~=" then
+	elseif op == "~=" or op == "!=" then
 		return lhsVer ~= rhsVer
 	else
 		error(string.format("Invalid operator: %*", op))
@@ -83,7 +83,7 @@ function Semver.cmpPrecedence(lhs: string, op: "<" | "<=" | "==" | ">" | ">=" | 
 		return ordering ~= Ordering.Greater
 	elseif op == ">=" then
 		return ordering ~= Ordering.Less
-	elseif op == "~=" then
+	elseif op == "~=" or op == "!=" then
 		return ordering ~= Ordering.Equal
 	else
 		error(string.format("Invalid operator: %*", op))

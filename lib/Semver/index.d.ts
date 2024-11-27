@@ -11,7 +11,7 @@ declare namespace Semver {
 	 * })
 	 * ```
 	 */
-	export const cmp: (lhs: string, op: "<" | "<=" | "==" | ">" | ">=" | "~=", rhs: string) => boolean;
+	export const cmp: (lhs: string, op: "<" | "<=" | "==" | ">" | ">=" | "~=" | "!=", rhs: string) => boolean;
 	/**
 	 * Compare the major, minor, patch and [Prerelease](https://tim7775.github.io/luau-cargo-semver/api/Prerelease) value of two [Versions](https://tim7775.github.io/luau-cargo-semver/api/Version),
 	 * disregarding [BuildMetadata](https://tim7775.github.io/luau-cargo-semver/api/BuildMetadata). [Versions](https://tim7775.github.io/luau-cargo-semver/api/Version) that differ only in [BuildMetadata](https://tim7775.github.io/luau-cargo-semver/api/BuildMetadata)
@@ -23,7 +23,7 @@ declare namespace Semver {
 	 * assert(Semver.cmpPrecedence(newVersion, ">=", oldVersion), "newVersion must be >= oldVersion");
 	 * ```
 	 */
-	export const cmpPrecedence: (lhs: string, op: "<" | "<=" | "==" | ">" | ">=" | "~=", rhs: string) => boolean;
+	export const cmpPrecedence: (lhs: string, op: "<" | "<=" | "==" | ">" | ">=" | "~=" | "!=", rhs: string) => boolean;
 	/**
 	 * **Usage:**
 	 * ```ts
