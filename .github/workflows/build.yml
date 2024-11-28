@@ -18,6 +18,8 @@ jobs:
 
       - name: Install tools using Rokit
         uses: CompeyDev/setup-rokit@v0.1.2
+        with:
+          cache: true
 
       - name: Build Roblox source
         run: lune run build-roblox-source.luau

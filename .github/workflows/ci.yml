@@ -18,6 +18,8 @@ jobs:
 
       - name: Install tools using Rokit
         uses: CompeyDev/setup-rokit@v0.1.2
+        with:
+          cache: true
 
       - name: Build Roblox source
         run: lune run build-roblox-source.luau
@@ -37,6 +39,8 @@ jobs:
 
       - name: Install tools using Rokit
         uses: CompeyDev/setup-rokit@v0.1.2
+        with:
+          cache: true
 
       - name: Lint
         run: selene ./lib
@@ -48,9 +52,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run StyLua
-        uses: JohnnyMorganz/stylua-action@v4
+      - name: Install tools using Rokit
+        uses: CompeyDev/setup-rokit@v0.1.2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          version: v2.0.1
-          args: --check ./lib
+          cache: true
+
+      - name: Run StyLua check
+        run: stylua --check ./lib
