@@ -1,0 +1,13 @@
+{
+  "configurations": [
+    {
+      "name": "run-in-roblox",
+      "request": "launch",
+      "runtimeArgs": ["run-script", "test"],
+      "runtimeExecutable": "npm",
+      "skipFiles": ["**"],
+      "type": "node",
+      "console": "integratedTerminal",
+    },
+  ],
+}

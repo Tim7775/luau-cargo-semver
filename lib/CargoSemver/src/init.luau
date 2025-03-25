@@ -15,12 +15,12 @@
 	* limitations under the License.
 ]]
 
-local BuildMetadata = require("./BuildMetadata") -->require(script.BuildMetadata)
-local Comparator = require("./Comparator") -->require(script.Comparator)
-local Ordering = require("./Ordering") -->require(script.Ordering)
-local Prerelease = require("./Prerelease") -->require(script.Prerelease)
-local Version = require("./Version") -->require(script.Version)
-local VersionReq = require("./VersionReq") -->require(script.VersionReq)
+local BuildMetadata = require("@self/BuildMetadata") -->require(script.BuildMetadata)
+local Comparator = require("@self/Comparator") -->require(script.Comparator)
+local Ordering = require("@self/Ordering") -->require(script.Ordering)
+local Prerelease = require("@self/Prerelease") -->require(script.Prerelease)
+local Version = require("@self/Version") -->require(script.Version)
+local VersionReq = require("@self/VersionReq") -->require(script.VersionReq)
 
 local CargoSemver = {
 	Version = Version,

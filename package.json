@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "test": "lune run tests"
+  },
   "devDependencies": {
     "@rbxts/compiler-types": "^3.0.0-types.0",
     "@rbxts/types": "^1.0.813",

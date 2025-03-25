@@ -82,7 +82,7 @@ robloxify("lib", "test/roblox-source")
 
 --Install Wally packages
 if not fs.isDir("test/Packages") then
-	local result = process.spawn("wally", { "install" }, { cwd = process.cwd .. "/" .. "test" })
+	local result = process.exec("wally", { "install" }, { cwd = process.cwd .. "/" .. "test" })
 	if not result.ok then
 		stdio.ewrite(stdio.color("red") .. "An error occured while installing Wally packages\n")
 		stdio.ewrite(result.stderr .. stdio.color("reset"))
@@ -92,7 +92,7 @@ if not fs.isDir("test/Packages") then
 end
 
 --Build Roblox place
-local result = process.spawn("rojo", {
+local result = process.exec("rojo", {
 	"build",
 	"roblox-place.project.json",
 	"-o",
@@ -109,7 +109,7 @@ stdio.write(stdio.color("blue") .. result.stdout .. stdio.color("reset"))
 local spinner = createSpinner()
 spinner.setText("Running tests in Roblox Studio...")
 spinner.start()
-result = process.spawn("run-in-roblox", {
+result = process.exec("run-in-roblox", {
 	"--place",
 	"test/test.rbxl",
 	"--script",

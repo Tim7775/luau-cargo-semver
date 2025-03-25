@@ -4,5 +4,8 @@
     "*": true
   },
   "lintErrors": false,
-  "typeErrors": true
+  "typeErrors": true,
+  "aliases": {
+    "lune": "~/.lune/.typedefs/0.9.3/"
+  }
 }
