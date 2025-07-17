@@ -1,6 +1,8 @@
 [package]
 name = "tim7775/cargo-semver"
-description = "https://github.com/tim7775/luau-cargo-semver"
+description = "A parser and evaluator for Cargo's flavor of Semantic Versioning"
+repository = "https://github.com/tim7775/luau-cargo-semver"
+homepage = "https://tim7775.github.io/luau-cargo-semver/"
 version = "1.0.20"
 license = "MIT"
 authors = ["Tim7775"]
