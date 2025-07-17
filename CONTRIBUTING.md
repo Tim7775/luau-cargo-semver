@@ -10,4 +10,4 @@
 
 Enter `lune run tests` in the project directory to run tests.
 
-In VSCode you can also run tests by opening the command palette (ctrl+shift+P) and selecting: `Tasks: Run test Task`.
+In VSCode you can also run tests by pressing F5.
