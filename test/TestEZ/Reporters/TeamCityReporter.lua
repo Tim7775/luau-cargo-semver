@@ -1,5 +1,3 @@
-local TestService = game:GetService("TestService")
-
 local TestEnum = require("../TestEnum")
 
 local TeamCityReporter = {}
@@ -72,6 +70,25 @@ local function report(root)
 	return table.concat(buffer, "\n")
 end
 
+local function reportErrors(errors)
+	if string.match(_VERSION, "^Lune") then
+		for _, message in ipairs(errors) do
+			print(message)
+
+			-- Insert a blank line after each error
+			print("")
+		end
+	else
+		local TestService = game:GetService("TestService")
+		for _, message in ipairs(errors) do
+			TestService:Error(message)
+
+			-- Insert a blank line after each error
+			print("")
+		end
+	end
+end
+
 function TeamCityReporter.report(results)
 	local resultBuffer = {
 		"Test results:",
@@ -89,12 +106,7 @@ function TeamCityReporter.report(results)
 		print("Errors reported by tests:")
 		print("")
 
-		for _, message in ipairs(results.errors) do
-			TestService:Error(message)
-
-			-- Insert a blank line after each error
-			print("")
-		end
+		reportErrors(results.errors)
 	end
 end
 

@@ -8,11 +8,48 @@ local TextReporter = require("./Reporters/TextReporter")
 
 local TestBootstrap = {}
 
+local function normalize(strPath)
+	return strPath:gsub("\\+", "/"):gsub("//+", "/"):gsub("/$", "")
+end
+
+local function getRequirePrefix(cwd)
+	local cwdSegments = normalize(cwd):split("/")
+	local scriptSegments = normalize(debug.info(2, "s")):split("/")
+	local i = 1
+	while cwdSegments[i] and scriptSegments[i] do
+		assert(cwdSegments[i] == scriptSegments[i], "couldn't resolve relative require path")
+		i += 1
+	end
+	local upSteps = #scriptSegments - i
+	return upSteps == 0 and "./" or string.rep("../", upSteps)
+end
+
 local function stripSpecSuffix(name)
 	return (name:gsub("%.spec$", ""))
 end
 local function isSpecScript(aScript)
 	return aScript:IsA("ModuleScript") and aScript.Name:match("%.spec$")
+end
+
+local function reverse(tbl)
+	for i = 1, #tbl // 2, 1 do
+		tbl[i], tbl[#tbl - i + 1] = tbl[#tbl - i + 1], tbl[i]
+	end
+	return tbl
+end
+
+local function getPathLune(filePath: string): { string }
+	filePath = filePath:gsub("%.luau?$", "")
+	-- Use the directory's node for init.spec files.
+	filePath = filePath:gsub("/init%.spec$", "")
+	local path = filePath:split("/")
+	for i, component in path do
+		path[i] = stripSpecSuffix(component)
+	end
+	if path[1] == "." and #path > 1 then
+		table.remove(path, 1)
+	end
+	return reverse(path)
 end
 
 local function getPath(module, root)
@@ -66,16 +103,64 @@ function TestBootstrap:getModulesImpl(root, modules, current)
 	end
 end
 
+function TestBootstrap:getLuneModulesImpl(root: string, modules)
+	local fs = require("@lune/fs")
+	local function forEachFile(dirPath, callback)
+		for _, entry in ipairs(fs.readDir(dirPath)) do
+			local entryPath = dirPath .. "/" .. entry
+			if fs.isFile(entryPath) then
+				callback(entryPath, entry)
+			else
+				forEachFile(entryPath, callback)
+			end
+		end
+	end
+
+	local process = require("@lune/process")
+	local requirePrefix = getRequirePrefix(process.cwd)
+	local function requireFile(filePath)
+		local requirePath = requirePrefix .. filePath:gsub("%.luau?$", "")
+		return require(requirePath) :: any
+	end
+
+	local specFiles = {}
+	local rootPath = normalize(root)
+	if fs.isDir(rootPath) then
+		forEachFile(rootPath, function(filePath, fileName)
+			if fileName:match("%.spec%.luau?$") then
+				table.insert(specFiles, filePath)
+			end
+		end)
+	elseif rootPath:match("%.spec%.luau?$") then
+		table.insert(specFiles, rootPath)
+	end
+
+	for _, filePath in ipairs(specFiles) do
+		local method = requireFile(filePath)
+		local path = getPathLune(filePath)
+		local pathString = toStringPath(path)
+
+		table.insert(modules, {
+			method = method,
+			path = path,
+			pathStringForSorting = pathString:lower(),
+		})
+	end
+end
+
 --[[
 	Find all the ModuleScripts in this tree that are tests.
 ]]
-function TestBootstrap:getModules(root)
+function TestBootstrap:getModules(root: string | Instance)
 	local modules = {}
 
-	self:getModulesImpl(root, modules)
-
-	for _, child in ipairs(root:GetDescendants()) do
-		self:getModulesImpl(root, modules, child)
+	if type(root) == "string" then
+		self:getLuneModulesImpl(root, modules)
+	else
+		self:getModulesImpl(root, modules)
+		for _, child in ipairs(root:GetDescendants()) do
+			self:getModulesImpl(root, modules, child)
+		end
 	end
 
 	return modules

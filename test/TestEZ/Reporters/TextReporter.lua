@@ -3,8 +3,6 @@
 	standard output and TestService.
 ]]
 
-local TestService = game:GetService("TestService")
-
 local TestEnum = require("../TestEnum")
 
 local INDENT = (" "):rep(3)
@@ -66,6 +64,25 @@ local function report(root)
 	return table.concat(buffer, "\n")
 end
 
+local function reportErrors(errors)
+	if string.match(_VERSION, "^Lune") then
+		for _, message in ipairs(errors) do
+			print(message)
+
+			-- Insert a blank line after each error
+			print("")
+		end
+	else
+		local TestService = game:GetService("TestService")
+		for _, message in ipairs(errors) do
+			TestService:Error(message)
+
+			-- Insert a blank line after each error
+			print("")
+		end
+	end
+end
+
 function TextReporter.report(results)
 	local resultBuffer = {
 		"Test results:",
@@ -83,12 +100,7 @@ function TextReporter.report(results)
 		print("Errors reported by tests:")
 		print("")
 
-		for _, message in ipairs(results.errors) do
-			TestService:Error(message)
-
-			-- Insert a blank line after each error
-			print("")
-		end
+		reportErrors(results.errors)
 	end
 end
 
