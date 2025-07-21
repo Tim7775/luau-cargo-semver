@@ -1,22 +1,12 @@
 local Expectation = require("./Expectation")
 local checkMatcherNameCollisions = Expectation.checkMatcherNameCollisions
 
-local function copy(t)
-	local result = {}
-
-	for key, value in pairs(t) do
-		result[key] = value
-	end
-
-	return result
-end
-
 local ExpectationContext = {}
 ExpectationContext.__index = ExpectationContext
 
 function ExpectationContext.new(parent)
 	local self = {
-		_extensions = parent and copy(parent._extensions) or {},
+		_extensions = parent and table.clone(parent._extensions) or {},
 	}
 
 	return setmetatable(self, ExpectationContext)
