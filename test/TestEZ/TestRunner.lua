@@ -6,9 +6,9 @@
 	state is contained inside a TestSession object.
 ]]
 
-local LifecycleHooks = require(script.Parent.LifecycleHooks)
-local TestEnum = require(script.Parent.TestEnum)
-local TestSession = require(script.Parent.TestSession)
+local LifecycleHooks = require("./LifecycleHooks")
+local TestEnum = require("./TestEnum")
+local TestSession = require("./TestSession")
 
 local RUNNING_GLOBAL = "__TESTEZ_RUNNING_TEST__"
 

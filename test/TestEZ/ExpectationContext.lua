@@ -1,4 +1,4 @@
-local Expectation = require(script.Parent.Expectation)
+local Expectation = require("./Expectation")
 local checkMatcherNameCollisions = Expectation.checkMatcherNameCollisions
 
 local function copy(t)

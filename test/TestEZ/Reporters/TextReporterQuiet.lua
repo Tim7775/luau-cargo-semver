@@ -7,7 +7,7 @@
 
 local TestService = game:GetService("TestService")
 
-local TestEnum = require(script.Parent.Parent.TestEnum)
+local TestEnum = require("../TestEnum")
 
 local INDENT = (" "):rep(3)
 local STATUS_SYMBOLS = {

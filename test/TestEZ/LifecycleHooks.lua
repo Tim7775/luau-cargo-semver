@@ -1,4 +1,4 @@
-local TestEnum = require(script.Parent.TestEnum)
+local TestEnum = require("./TestEnum")
 
 local LifecycleHooks = {}
 LifecycleHooks.__index = LifecycleHooks

@@ -7,7 +7,7 @@
 	TestResults objects are produced by TestRunner using TestSession as state.
 ]]
 
-local TestEnum = require(script.Parent.TestEnum)
+local TestEnum = require("./TestEnum")
 
 local STATUS_SYMBOLS = {
 	[TestEnum.TestStatus.Success] = "+",

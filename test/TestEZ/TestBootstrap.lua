@@ -2,9 +2,9 @@
 	Provides an interface to quickly run and report tests from a given object.
 ]]
 
-local TestPlanner = require(script.Parent.TestPlanner)
-local TestRunner = require(script.Parent.TestRunner)
-local TextReporter = require(script.Parent.Reporters.TextReporter)
+local TestPlanner = require("./TestPlanner")
+local TestRunner = require("./TestRunner")
+local TextReporter = require("./Reporters/TextReporter")
 
 local TestBootstrap = {}
 

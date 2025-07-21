@@ -1,6 +1,6 @@
 local TestService = game:GetService("TestService")
 
-local TestEnum = require(script.Parent.Parent.TestEnum)
+local TestEnum = require("../TestEnum")
 
 local TeamCityReporter = {}
 

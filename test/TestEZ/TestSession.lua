@@ -7,10 +7,10 @@
 	track of a stack of nodes that represent the current path through the tree.
 ]]
 
-local Context = require(script.Parent.Context)
-local ExpectationContext = require(script.Parent.ExpectationContext)
-local TestEnum = require(script.Parent.TestEnum)
-local TestResults = require(script.Parent.TestResults)
+local Context = require("./Context")
+local ExpectationContext = require("./ExpectationContext")
+local TestEnum = require("./TestEnum")
+local TestResults = require("./TestResults")
 
 local TestSession = {}
 

@@ -3,7 +3,7 @@
 
 	Uses a TestPlanBuilder to keep track of the state of the tree being built.
 ]]
-local TestPlan = require(script.Parent.TestPlan)
+local TestPlan = require("./TestPlan")
 
 local TestPlanner = {}
 
