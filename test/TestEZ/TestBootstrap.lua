@@ -61,7 +61,7 @@ function TestBootstrap:getModulesImpl(root, modules, current)
 		table.insert(modules, {
 			method = method,
 			path = path,
-			pathStringForSorting = pathString:lower()
+			pathStringForSorting = pathString:lower(),
 		})
 	end
 end

@@ -1,4 +1,5 @@
 local Expectation = require(script.Expectation)
+local TeamCityReporter = require(script.Reporters.TeamCityReporter)
 local TestBootstrap = require(script.TestBootstrap)
 local TestEnum = require(script.TestEnum)
 local TestPlan = require(script.TestPlan)
@@ -8,7 +9,6 @@ local TestRunner = require(script.TestRunner)
 local TestSession = require(script.TestSession)
 local TextReporter = require(script.Reporters.TextReporter)
 local TextReporterQuiet = require(script.Reporters.TextReporterQuiet)
-local TeamCityReporter = require(script.Reporters.TeamCityReporter)
 
 local function run(testRoot, callback)
 	local modules = TestBootstrap:getModules(testRoot)

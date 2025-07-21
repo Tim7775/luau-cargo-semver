@@ -7,10 +7,10 @@
 	track of a stack of nodes that represent the current path through the tree.
 ]]
 
-local TestEnum = require(script.Parent.TestEnum)
-local TestResults = require(script.Parent.TestResults)
 local Context = require(script.Parent.Context)
 local ExpectationContext = require(script.Parent.ExpectationContext)
+local TestEnum = require(script.Parent.TestEnum)
+local TestResults = require(script.Parent.TestResults)
 
 local TestSession = {}
 
@@ -27,7 +27,7 @@ function TestSession.new(plan)
 		nodeStack = {},
 		contextStack = {},
 		expectationContextStack = {},
-		hasFocusNodes = false
+		hasFocusNodes = false,
 	}
 
 	setmetatable(self, TestSession)
@@ -130,7 +130,6 @@ function TestSession:getContext()
 	return self.contextStack[#self.contextStack]
 end
 
-
 function TestSession:getExpectationContext()
 	assert(#self.expectationContextStack > 0, "Tried to get expectationContext from an empty stack!")
 	return self.expectationContextStack[#self.expectationContextStack]
@@ -203,7 +202,7 @@ end
 	way.
 ]]
 function TestSession:addDummyError(phrase, message)
-	self:pushNode({type = TestEnum.NodeType.It, phrase = phrase})
+	self:pushNode({ type = TestEnum.NodeType.It, phrase = phrase })
 	self:setError(message)
 	self:popNode()
 	self.nodeStack[#self.nodeStack].status = TestEnum.TestStatus.Failure

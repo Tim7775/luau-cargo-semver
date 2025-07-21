@@ -6,14 +6,14 @@
 	state is contained inside a TestSession object.
 ]]
 
+local LifecycleHooks = require(script.Parent.LifecycleHooks)
 local TestEnum = require(script.Parent.TestEnum)
 local TestSession = require(script.Parent.TestSession)
-local LifecycleHooks = require(script.Parent.LifecycleHooks)
 
 local RUNNING_GLOBAL = "__TESTEZ_RUNNING_TEST__"
 
 local TestRunner = {
-	environment = {}
+	environment = {},
 }
 
 local function wrapExpectContextWithPublicApi(expectationContext)
@@ -81,14 +81,11 @@ function TestRunner.runPlanNode(session, planNode, lifecycleHooks)
 
 		local context = session:getContext()
 
-		local nodeSuccess, nodeResult = xpcall(
-			function()
-				callback(context)
-			end,
-			function(message)
-				return messagePrefix .. debug.traceback(tostring(message), 2)
-			end
-		)
+		local nodeSuccess, nodeResult = xpcall(function()
+			callback(context)
+		end, function(message)
+			return messagePrefix .. debug.traceback(tostring(message), 2)
+		end)
 
 		-- If a node threw an error, we prefer to use that message over
 		-- one created by fail() if it was set.
@@ -119,7 +116,10 @@ function TestRunner.runPlanNode(session, planNode, lifecycleHooks)
 			local success, errorMessage = runCallback(hook, "afterEach hook: ")
 			if not success then
 				if not testSuccess then
-					return false, testErrorMessage .. "\nWhile cleaning up the failed test another error was found:\n" .. errorMessage
+					return false,
+						testErrorMessage
+							.. "\nWhile cleaning up the failed test another error was found:\n"
+							.. errorMessage
 				end
 				return false, errorMessage
 			end

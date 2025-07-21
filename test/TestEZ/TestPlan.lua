@@ -5,16 +5,15 @@
 	TestPlan objects are produced by TestPlanner.
 ]]
 
-local TestEnum = require(script.Parent.TestEnum)
 local Expectation = require(script.Parent.Expectation)
+local TestEnum = require(script.Parent.TestEnum)
 
 local function newEnvironment(currentNode, extraEnvironment)
 	local env = {}
 
 	if extraEnvironment then
 		if type(extraEnvironment) ~= "table" then
-			error(("Bad argument #2 to newEnvironment. Expected table, got %s"):format(
-				typeof(extraEnvironment)), 2)
+			error(("Bad argument #2 to newEnvironment. Expected table, got %s"):format(typeof(extraEnvironment)), 2)
 		end
 
 		for key, value in pairs(extraEnvironment) do
@@ -67,7 +66,7 @@ local function newEnvironment(currentNode, extraEnvironment)
 		[TestEnum.NodeType.BeforeAll] = "beforeAll",
 		[TestEnum.NodeType.AfterAll] = "afterAll",
 		[TestEnum.NodeType.BeforeEach] = "beforeEach",
-		[TestEnum.NodeType.AfterEach] = "afterEach"
+		[TestEnum.NodeType.AfterEach] = "afterEach",
 	}
 
 	for nodeType, name in pairs(lifecycleHooks) do
@@ -96,8 +95,10 @@ local function newEnvironment(currentNode, extraEnvironment)
 		warning.
 	]]
 	function env.HACK_NO_XPCALL()
-		warn("HACK_NO_XPCALL is deprecated. It is now safe to yield in an " ..
-			"xpcall, so this is no longer necessary. It can be safely deleted.")
+		warn(
+			"HACK_NO_XPCALL is deprecated. It is now safe to yield in an "
+				.. "xpcall, so this is no longer necessary. It can be safely deleted."
+		)
 	end
 
 	env.fit = env.itFOCUS
@@ -107,7 +108,7 @@ local function newEnvironment(currentNode, extraEnvironment)
 
 	env.expect = setmetatable({
 		extend = function(...)
-			error("Cannot call \"expect.extend\" from within a \"describe\" node.")
+			error('Cannot call "expect.extend" from within a "describe" node.')
 		end,
 	}, {
 		__call = function(_self, ...)
