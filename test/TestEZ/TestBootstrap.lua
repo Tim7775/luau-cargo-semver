@@ -108,7 +108,7 @@ function TestBootstrap:run(roots, reporter, otherOptions)
 		error(("Bad argument #1 to TestBootstrap:run. Expected table, got %s"):format(typeof(roots)), 2)
 	end
 
-	local startTime = tick()
+	local startTime = os.clock()
 
 	local modules = {}
 	for _, subRoot in ipairs(roots) do
@@ -119,16 +119,16 @@ function TestBootstrap:run(roots, reporter, otherOptions)
 		end
 	end
 
-	local afterModules = tick()
+	local afterModules = os.clock()
 
 	local plan = TestPlanner.createPlan(modules, testNamePattern, extraEnvironment)
-	local afterPlan = tick()
+	local afterPlan = os.clock()
 
 	local results = TestRunner.runPlan(plan)
-	local afterRun = tick()
+	local afterRun = os.clock()
 
 	reporter.report(results)
-	local afterReport = tick()
+	local afterReport = os.clock()
 
 	if showTimingInfo then
 		local timing = {
