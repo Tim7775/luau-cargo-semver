@@ -11,7 +11,6 @@
 		(c) 2024, Zack Ovits
 --]]
 
-local fs = require("@lune/fs")
 local process = require("@lune/process")
 local robloxify = require("./lune-utils/robloxify")
 local stdio = require("@lune/stdio")
@@ -79,17 +78,6 @@ end
 
 --Build Roblox source
 robloxify("lib", "test/roblox-source")
-
---Install Wally packages
-if not fs.isDir("test/Packages") then
-	local result = process.exec("wally", { "install" }, { cwd = process.cwd .. "/" .. "test" })
-	if not result.ok then
-		stdio.ewrite(stdio.color("red") .. "An error occured while installing Wally packages\n")
-		stdio.ewrite(result.stderr .. stdio.color("reset"))
-		process.exit(1)
-	end
-	stdio.write(stdio.color("blue") .. result.stderr .. stdio.color("reset"))
-end
 
 --Build Roblox place
 local result = process.exec("rojo", {
