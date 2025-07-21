@@ -22,6 +22,7 @@ Thumbs.db
 
 # Generated Roblox source
 /test/*
+!/test/TestEZ
 !/test/wally.toml
 !/test/run.server.luau
 

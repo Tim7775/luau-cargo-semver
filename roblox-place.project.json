@@ -14,8 +14,8 @@
       "$properties": {
         "ExecuteWithStudioRun": true
       },
-      "Packages": {
-        "$path": "test/Packages"
+      "TestEZ": {
+        "$path": "test/TestEZ"
       },
       "run": {
         "$path": "test/run.server.luau"
