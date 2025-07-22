@@ -13,7 +13,7 @@
     {
       "type": "shell",
       "label": "Test",
-      "command": "lune run tests",
+      "command": "lune run lune-test",
       "group": {
         "kind": "test",
         "isDefault": true,
