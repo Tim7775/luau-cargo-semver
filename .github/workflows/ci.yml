@@ -59,3 +59,17 @@ jobs:
 
       - name: Run StyLua check
         run: stylua --check ./lib
+
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install tools using Rokit
+        uses: CompeyDev/setup-rokit@v0.1.2
+        with:
+          cache: true
+
+      - name: Run tests
+        run: lune run lune-test
