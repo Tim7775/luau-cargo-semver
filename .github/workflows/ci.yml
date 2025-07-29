@@ -21,14 +21,11 @@ jobs:
         with:
           cache: true
 
-      - name: Build Roblox source
-        run: lune run build-roblox-source.luau
-
       - name: Build sourcemap
-        run: rojo sourcemap roblox-model.project.json --output roblox-sourcemap.json
+        run: rojo sourcemap default.project.json --output sourcemap.json
 
       - name: Analyze
-        run: luau-lsp analyze --definitions=testez.d.luau --base-luaurc=.luaurc --sourcemap=roblox-sourcemap.json test/roblox-source
+        run: luau-lsp analyze --definitions=testez.d.luau --base-luaurc=.luaurc --sourcemap=sourcemap.json lib
 
   lint:
     name: Lint

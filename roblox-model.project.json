@@ -1,7 +1,0 @@
-{
-  "name": "luau-cargo-semver",
-  "globIgnorePaths": ["**/package.json", "**/*.ts"],
-  "tree": {
-    "$path": "test/roblox-source"
-  }
-}

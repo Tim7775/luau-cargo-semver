@@ -12,7 +12,6 @@
 --]]
 
 local process = require("@lune/process")
-local robloxify = require("./lune-utils/robloxify")
 local stdio = require("@lune/stdio")
 local task = require("@lune/task")
 
@@ -75,9 +74,6 @@ function createSpinner()
 
 	return spinner
 end
-
---Build Roblox source
-robloxify("lib", "test/roblox-source")
 
 --Build Roblox place
 local result = process.exec("rojo", {

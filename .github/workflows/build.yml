@@ -21,11 +21,8 @@ jobs:
         with:
           cache: true
 
-      - name: Build Roblox source
-        run: lune run build-roblox-source.luau
-
       - name: Build Roblox model
-        run: rojo build roblox-model.project.json -o luau-cargo-semver.rbxm
+        run: rojo build default.project.json -o luau-cargo-semver.rbxm
 
       - name: Upload Roblox model as artifact
         uses: actions/upload-artifact@v4
