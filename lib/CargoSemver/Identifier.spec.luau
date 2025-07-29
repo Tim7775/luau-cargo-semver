@@ -2,8 +2,8 @@
 --!strict
 --upstream: https://github.com/dtolnay/semver/blob/83154eaa576ebbb9637dabaf74922177982c6393/tests/test_identifier.rs
 
-local BuildMetadata = require("./BuildMetadata") -->require(script.Parent.BuildMetadata)
-local Prerelease = require("./Prerelease") -->require(script.Parent.Prerelease)
+local BuildMetadata = require("./BuildMetadata")
+local Prerelease = require("./Prerelease")
 
 local prerelease = Prerelease.new
 local build_metadata = BuildMetadata.new

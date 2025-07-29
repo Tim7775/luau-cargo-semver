@@ -15,7 +15,7 @@
 	* limitations under the License.
 ]]
 
-local Error = require("./Error") -->require(script.Parent.Error)
+local Error = require("./Error")
 
 export type StringView = {
 	str: string,

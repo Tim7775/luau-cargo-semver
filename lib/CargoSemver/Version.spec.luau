@@ -2,9 +2,9 @@
 --!strict
 --upstream: https://github.com/dtolnay/semver/blob/83154eaa576ebbb9637dabaf74922177982c6393/tests/test_version.rs
 
-local BuildMetadata = require("./BuildMetadata") -->require(script.Parent.BuildMetadata)
-local Prerelease = require("./Prerelease") -->require(script.Parent.Prerelease)
-local Version = require("./Version") -->require(script.Parent.Version)
+local BuildMetadata = require("./BuildMetadata")
+local Prerelease = require("./Prerelease")
+local Version = require("./Version")
 
 local version = Version.parse
 local build_metadata = BuildMetadata.new

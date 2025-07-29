@@ -15,12 +15,12 @@
 	* limitations under the License.
 ]]
 
-local Comparator = require("./Comparator") -->require(script.Parent.Comparator)
-local Error = require("./Error") -->require(script.Parent.Error)
-local Version = require("./Version") -->require(script.Parent.Version)
+local Comparator = require("./Comparator")
+local Error = require("./Error")
+local Version = require("./Version")
 local Position = Error.Position
 
-local Parse = require("./Parse") -->require(script.Parent.Parse)
+local Parse = require("./Parse")
 local wildcard = Parse.wildcard
 local skipWhitespace = Parse.skipWhitespace
 

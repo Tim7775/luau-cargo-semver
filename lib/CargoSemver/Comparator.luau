@@ -15,10 +15,10 @@
 	* limitations under the License.
 ]]
 
-local Prerelease = require("./Prerelease") -->require(script.Parent.Prerelease)
-local Version = require("./Version") -->require(script.Parent.Version)
+local Prerelease = require("./Prerelease")
+local Version = require("./Version")
 
-local Parse = require("./Parse") -->require(script.Parent.Parse)
+local Parse = require("./Parse")
 local Operators = Parse.Operators
 local buildIdentifier = Parse.buildIdentifier
 local prereleaseIdentifier = Parse.prereleaseIdentifier
@@ -28,7 +28,7 @@ local skipWhitespace = Parse.skipWhitespace
 local operator = Parse.operator
 local findByte = Parse.findByte
 
-local Error = require("./Error") -->require(script.Parent.Error)
+local Error = require("./Error")
 local Position = Error.Position
 local bDot, bMinus, bPlus = string.byte(".-+", 1, 3)
 

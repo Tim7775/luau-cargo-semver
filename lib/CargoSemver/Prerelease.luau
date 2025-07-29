@@ -15,8 +15,8 @@
 	* limitations under the License.
 ]]
 
-local Error = require("./Error") -->require(script.Parent.Error)
-local Parse = require("./Parse") -->require(script.Parent.Parse)
+local Error = require("./Error")
+local Parse = require("./Parse")
 
 --[=[
 	@class Prerelease

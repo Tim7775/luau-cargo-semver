@@ -2,9 +2,9 @@
 --!strict
 --upstream: https://github.com/dtolnay/semver/blob/83154eaa576ebbb9637dabaf74922177982c6393/tests/test_version_req.rs
 
-local Comparator = require("./Comparator") -->require(script.Parent.Comparator)
-local Version = require("./Version") -->require(script.Parent.Version)
-local VersionReq = require("./VersionReq") -->require(script.Parent.VersionReq)
+local Comparator = require("./Comparator")
+local Version = require("./Version")
+local VersionReq = require("./VersionReq")
 
 local req = VersionReq.parse
 local version = Version.parse

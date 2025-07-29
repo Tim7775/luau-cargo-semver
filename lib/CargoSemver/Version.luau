@@ -15,18 +15,18 @@
 	* limitations under the License.
 ]]
 
-local BuildMetadata = require("./BuildMetadata") -->require(script.Parent.BuildMetadata)
-local Ordering = require("./Ordering") -->require(script.Parent.Ordering)
-local Prerelease = require("./Prerelease") -->require(script.Parent.Prerelease)
+local BuildMetadata = require("./BuildMetadata")
+local Ordering = require("./Ordering")
+local Prerelease = require("./Prerelease")
 
-local Parse = require("./Parse") -->require(script.Parent.Parse)
+local Parse = require("./Parse")
 local buildIdentifier = Parse.buildIdentifier
 local prereleaseIdentifier = Parse.prereleaseIdentifier
 local numericIdentifier = Parse.numericIdentifier
 local findByte = Parse.findByte
 local dot = Parse.dot
 
-local Error = require("./Error") -->require(script.Parent.Error)
+local Error = require("./Error")
 local Position = Error.Position
 
 local function validateVersionNumber(num: number, pos: Error.Pos)
