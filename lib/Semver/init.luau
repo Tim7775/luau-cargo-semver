@@ -15,7 +15,7 @@
 	* limitations under the License.
 ]]
 
-local CargoSemver = require("./CargoSemver/src/init.luau") -->require(script.Parent.CargoSemver)
+local CargoSemver = require("./CargoSemver") -->require(script.Parent.CargoSemver)
 local Ordering = CargoSemver.Ordering
 local parseVer = CargoSemver.Version.parse
 local parseReq = CargoSemver.VersionReq.parse

@@ -31,7 +31,7 @@ print(versions)
 ### CargoSemver API
 
 ```lua
-local CargoSemver = require("luau-cargo-semver/lib/CargoSemver/src")
+local CargoSemver = require("luau-cargo-semver/lib/CargoSemver")
 local BuildMetadata, Prerelease, Version, VersionReq, Ordering =
 	CargoSemver.BuildMetadata, CargoSemver.Prerelease, CargoSemver.Version, CargoSemver.VersionReq, CargoSemver.Ordering
 
