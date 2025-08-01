@@ -30,3 +30,7 @@ Thumbs.db
 /build/
 # Npm dependencies
 node_modules/
+
+# Normally it's a good idea to commit this. However, in this
+# repository we see no benefit from reproducible npm builds.
+package-lock.json
