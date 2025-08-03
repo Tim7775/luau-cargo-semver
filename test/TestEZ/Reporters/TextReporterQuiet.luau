@@ -60,11 +60,14 @@ end
 
 local function reportErrors(errors)
 	if string.match(_VERSION, "^Lune") then
+		local stdio = require("@lune/stdio")
 		for _, message in ipairs(errors) do
-			print(message)
+			stdio.ewrite(stdio.color("red"))
+			stdio.ewrite(message)
+			stdio.ewrite(stdio.color("reset"))
 
 			-- Insert a blank line after each error
-			print("")
+			stdio.ewrite("\n")
 		end
 	else
 		local TestService = game:GetService("TestService")
