@@ -67,4 +67,4 @@ jobs:
           cache: true
 
       - name: Run tests
-        run: lune run lune-test
+        run: lune run test
