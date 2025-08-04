@@ -1,5 +1,5 @@
 --!nocheck
-local TestEZ = require("../test/TestEZ")
+local TestEZ = require("./TestEZ")
 local process = require("@lune/process")
 
 local results = TestEZ.TestBootstrap:run({
