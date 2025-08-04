@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "lune run roblox-test"
+    "test": "lune run lune-test"
   },
   "devDependencies": {
     "@rbxts/compiler-types": "^3.0.0-types.0",

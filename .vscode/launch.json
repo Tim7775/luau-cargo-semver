@@ -1,7 +1,7 @@
 {
   "configurations": [
     {
-      "name": "run-in-roblox",
+      "name": "Run tests",
       "request": "launch",
       "runtimeArgs": ["run-script", "test"],
       "runtimeExecutable": "npm",
