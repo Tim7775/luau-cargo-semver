@@ -20,11 +20,8 @@ Thumbs.db
 /sourcemap.json
 /roblox-sourcemap.json
 
-# Generated Roblox source
-/test/*
-!/test/TestEZ
-!/test/wally.toml
-!/test/run.server.luau
+# Generated files
+/dist/*
 
 # Moonwave build
 /build/

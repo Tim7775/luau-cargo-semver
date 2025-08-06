@@ -1,17 +1,17 @@
 local fs = require("@lune/fs")
 local serde = require("@lune/serde")
 
-fs.copy("lib", "test/roblox-ts-source", true)
+fs.copy("lib", "dist/roblox-ts-source", true)
 --Delete wally.toml files to prevent accidental publishing of roblox-ts source to wally registry
-fs.removeFile("test/roblox-ts-source/CargoSemver/wally.toml")
-fs.removeFile("test/roblox-ts-source/Semver/wally.toml")
+fs.removeFile("dist/roblox-ts-source/CargoSemver/wally.toml")
+fs.removeFile("dist/roblox-ts-source/Semver/wally.toml")
 
 --Insert Roblox-ts README
-fs.copy("docs/_roblox-ts-readme.md", "test/roblox-ts-source/Semver/README.md", true)
+fs.copy("docs/_roblox-ts-readme.md", "dist/roblox-ts-source/Semver/README.md", true)
 
 --Restructure directory
-local sourceDir = "test/roblox-ts-source/Semver/"
-local targetDir = "test/roblox-ts-source/"
+local sourceDir = "dist/roblox-ts-source/Semver/"
+local targetDir = "dist/roblox-ts-source/"
 for _, entry in pairs(fs.readDir(sourceDir)) do
 	fs.move(sourceDir .. entry, targetDir .. entry)
 end
