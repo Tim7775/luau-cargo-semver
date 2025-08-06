@@ -8,4 +8,4 @@ license = "MIT"
 authors = ["Tim7775"]
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
-private = true #robloxify
+exclude = ["**/*.spec.luau"]

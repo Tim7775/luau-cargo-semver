@@ -1,6 +1,6 @@
 {
   "name": "luau-cargo-semver",
-  "globIgnorePaths": ["**/package.json", "**/*.ts"],
+  "globIgnorePaths": ["**/*.json", "**/*.ts", "**/*.spec.luau"],
   "tree": {
     "$path": "lib/"
   }

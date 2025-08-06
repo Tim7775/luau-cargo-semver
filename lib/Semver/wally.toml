@@ -8,8 +8,7 @@ license = "MIT"
 authors = ["Tim7775"]
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
-exclude = ["node_modules", "package.json", "**/*.ts"]
-private = true #robloxify
+exclude = ["node_modules", "**/*.json", "**/*.ts", "**/*.spec.luau"]
 
 [dependencies]
 CargoSemver = "tim7775/cargo-semver@1.0"
