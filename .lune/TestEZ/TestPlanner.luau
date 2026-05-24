@@ -1,3 +1,4 @@
+--!nocheck
 --[[
 	Turns a series of specification functions into a test plan.
 

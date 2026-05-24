@@ -1,3 +1,4 @@
+--!nocheck
 local Expectation = require("@self/Expectation")
 local TeamCityReporter = require("@self/Reporters/TeamCityReporter")
 local TestBootstrap = require("@self/TestBootstrap")
@@ -10,7 +11,7 @@ local TestSession = require("@self/TestSession")
 local TextReporter = require("@self/Reporters/TextReporter")
 local TextReporterQuiet = require("@self/Reporters/TextReporterQuiet")
 
-local function run(testRoot, callback)
+local function run(testRoot: string | Instance, callback: (any) -> ...any)
 	local modules = TestBootstrap:getModules(testRoot)
 	local plan = TestPlanner.createPlan(modules)
 	local results = TestRunner.runPlan(plan)

@@ -1,3 +1,4 @@
+--!nocheck
 --[[
 	Represents the state relevant while executing a test plan.
 

@@ -1,3 +1,5 @@
+--!nocheck
+--#selene: allow(undefined_variable)
 --[[
 	The TextReporter uses the results from a completed test to output text to
 	standard output and TestService.

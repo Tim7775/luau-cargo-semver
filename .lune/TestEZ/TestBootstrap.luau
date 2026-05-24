@@ -1,3 +1,5 @@
+--!nocheck
+--#selene: allow(undefined_variable)
 --[[
 	Provides an interface to quickly run and report tests from a given object.
 ]]

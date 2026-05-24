@@ -1,3 +1,5 @@
+--!nocheck
+--#selene: allow(global_usage)
 --[[
 	Contains the logic to run a test plan and gather test results from it.
 

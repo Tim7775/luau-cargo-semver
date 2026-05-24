@@ -1,3 +1,5 @@
+--!nocheck
+--#selene: allow(undefined_variable)
 --[[
 	Copy of TextReporter that doesn't output successful tests.
 

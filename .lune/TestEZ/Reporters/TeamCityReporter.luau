@@ -1,3 +1,5 @@
+--!nocheck
+--#selene: allow(undefined_variable)
 local TestEnum = require("../TestEnum")
 
 local TeamCityReporter = {}
@@ -52,6 +54,7 @@ local function reportNode(node, buffer, level)
 		end
 		table.insert(buffer, teamCityLeaveCase(node.planNode.phrase))
 	end
+	return buffer
 end
 
 local function reportRoot(node)

@@ -1,3 +1,4 @@
+--!nocheck
 --[[
 	Constants used throughout the testing framework.
 ]]

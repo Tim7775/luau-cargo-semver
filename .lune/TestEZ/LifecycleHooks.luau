@@ -1,3 +1,4 @@
+--!nocheck
 local TestEnum = require("./TestEnum")
 
 local LifecycleHooks = {}
@@ -50,7 +51,7 @@ function LifecycleHooks:popHooks()
 end
 
 function LifecycleHooks:pushHooksFrom(planNode)
-	assert(planNode ~= nil)
+	assert(planNode ~= nil, "expected TestNode, got nil")
 
 	table.insert(self._stack, {
 		[TestEnum.NodeType.BeforeAll] = self:_getHooksOfType(planNode.children, TestEnum.NodeType.BeforeAll),

@@ -1,3 +1,4 @@
+--!nocheck
 --[[
 	Allows creation of expectation statements designed for behavior-driven
 	testing (BDD). See Chai (JS) or RSpec (Ruby) for examples of other BDD

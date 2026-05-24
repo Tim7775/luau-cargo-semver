@@ -1,3 +1,4 @@
+--!nocheck
 --[[
 	The Context object implements a write-once key-value store. It also allows
 	for a new Context object to inherit the entries from an existing one.

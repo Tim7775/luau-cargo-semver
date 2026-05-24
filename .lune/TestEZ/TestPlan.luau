@@ -1,3 +1,6 @@
+--!nocheck
+--#selene: allow(unused_variable)
+--#selene: allow(undefined_variable)
 --[[
 	Represents a tree of tests that have been loaded but not necessarily
 	executed yet.

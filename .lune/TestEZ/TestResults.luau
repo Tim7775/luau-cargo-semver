@@ -1,3 +1,4 @@
+--!nocheck
 --[[
 	Represents a tree of test results.
 

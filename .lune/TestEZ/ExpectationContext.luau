@@ -1,3 +1,4 @@
+--!nocheck
 local Expectation = require("./Expectation")
 local checkMatcherNameCollisions = Expectation.checkMatcherNameCollisions
 
