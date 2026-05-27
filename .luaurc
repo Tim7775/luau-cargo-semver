@@ -6,6 +6,6 @@
   "lintErrors": false,
   "typeErrors": true,
   "aliases": {
-    "lune": "~/.lune/.typedefs/0.10.1/"
+    "lune": "~/.lune/.typedefs/0.10.4/"
   }
 }

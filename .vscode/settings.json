@@ -2,19 +2,19 @@
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.exclude": {
-    "node_modules/": true,
+    "node_modules/": true
   },
   "[typescript][json][jsonc][yaml][github-actions-workflow]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": true
   },
   "[lua][luau]": {
     "editor.defaultFormatter": "JohnnyMorganz.stylua",
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": true
   },
   "stylua.searchBinaryInPATH": true,
   "luau-lsp.platform.type": "standard",
   "luau-lsp.sourcemap.enabled": false,
   "luau-lsp.fflags.enableNewSolver": false,
-  "luau-lsp.types.definitionFiles": [".vscode/definitions/testez.d.luau"],
+  "luau-lsp.types.definitionFiles": { "testez": ".vscode/definitions/testez.d.luau" }
 }

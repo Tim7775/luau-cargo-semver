@@ -3,7 +3,13 @@
   "trailingComma": "all",
   "overrides": [
     {
-      "files": ["**/.vscode/*.json", "**/tsconfig.json", "**/tsconfig.*.json"],
+      "files": [
+        ".vscode/extensions.json",
+        ".vscode/launch.json",
+        ".vscode/tasks.json",
+        "**/tsconfig.json",
+        "**/tsconfig.*.json"
+      ],
       "options": {
         "parser": "jsonc"
       }
