@@ -3,7 +3,7 @@
 
 - Run `rokit install` in the project directory to install the required tools.
 - Run `npm install` to install npm dependencies.
-- Run `lune setup` to generate Luau type definitions for the installed version of Lune.
+- Run `lute setup` to generate Luau type definitions for the installed version of Lute.
 
 ### Testing
-Enter `lune run test` in the project directory to run unit tests.
+Enter `lute test` in the project directory to run unit tests.

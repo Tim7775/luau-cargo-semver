@@ -4,7 +4,7 @@
     {
       "type": "shell",
       "label": "Build",
-      "command": "lune run build-distributables",
+      "command": "lute build-dist",
       "group": {
         "kind": "build",
         "isDefault": true,
@@ -13,7 +13,7 @@
     {
       "type": "shell",
       "label": "Test",
-      "command": "lune run test",
+      "command": "lute test",
       "group": {
         "kind": "test",
         "isDefault": true,

@@ -1,4 +1,4 @@
-local Semver = require("../lib/Semver")
+const Semver = require("../lib/Semver")
 
 do
 	local req = ">=1.2.3, <1.8.0"
@@ -16,5 +16,7 @@ do
 	table.sort(versions, function(a, b)
 		return Semver.cmp(a, "<", b)
 	end)
-	print(versions)
+	for _, v in ipairs(versions) do
+		print(v)
+	end
 end

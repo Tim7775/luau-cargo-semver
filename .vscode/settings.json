@@ -15,6 +15,5 @@
   "stylua.searchBinaryInPATH": true,
   "luau-lsp.platform.type": "standard",
   "luau-lsp.sourcemap.enabled": false,
-  "luau-lsp.fflags.enableNewSolver": false,
-  "luau-lsp.types.definitionFiles": { "testez": ".vscode/definitions/testez.d.luau" }
+  "luau-lsp.fflags.enableNewSolver": false
 }

@@ -1,11 +1,13 @@
 {
-  "languageMode": "strict",
+  "lintErrors": false,
   "lint": {
     "*": true
   },
-  "lintErrors": false,
+  "languageMode": "strict",
   "typeErrors": true,
   "aliases": {
-    "lune": "~/.lune/.typedefs/0.10.4/"
+    "std": "~/.lute/typedefs/1.0.0/std",
+    "lint": "~/.lute/typedefs/1.0.0/lint",
+    "lute": "~/.lute/typedefs/1.0.0/lute"
   }
 }
